@@ -1,0 +1,20 @@
+/* Local reveal animation primitives. */
+
+/* Nichol-style AOS fade-up, kept local so it never depends on a CDN. */
+
+html:not(.no-js) [data-reveal] {
+  opacity: 0;
+  filter: blur(7px);
+  transform: translate3d(0, 64px, 0);
+  transition-property: opacity, transform, filter;
+  transition-duration: 950ms;
+  transition-delay: var(--reveal-delay, 0ms);
+  transition-timing-function: var(--ease);
+  will-change: transform, opacity;
+}
+
+html:not(.no-js) [data-reveal].is-revealed {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate3d(0, 0, 0);
+}

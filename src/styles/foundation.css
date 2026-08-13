@@ -1,0 +1,135 @@
+/* Theme tokens, reset, typography and global utilities. */
+
+:root {
+  color-scheme: light;
+  --dark: #050c17;
+  --dark-soft: #0b1421;
+  --purple: #994ff5;
+  --purple-deep: #7d35dc;
+  --yellow: #ffc41f;
+  --sky: #0ea5e9;
+  --page: #ffffff;
+  --surface: #ffffff;
+  --surface-soft: #f7f8fa;
+  --text: #050c17;
+  --muted: #7780a1;
+  --border: rgba(119, 128, 161, 0.2);
+  --border-soft: rgba(119, 128, 161, 0.12);
+  --container: 104rem;
+  --header-height: 3.75rem;
+  --section-space: 7rem;
+  --ease: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0a111b;
+  --surface: #0d1622;
+  --surface-soft: #101b29;
+  --text: #f5f7fb;
+  --muted: #a7b0c8;
+  --border: rgba(255, 255, 255, 0.16);
+  --border-soft: rgba(255, 255, 255, 0.1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 80%;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+  overflow-x: clip;
+}
+
+body {
+  min-width: 0;
+  margin: 0;
+  overflow-x: clip;
+  background: var(--page);
+  color: var(--text);
+  font-family: "Sora", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  text-rendering: optimizeLegibility;
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
+}
+
+body.menu-open,
+body.dialog-open {
+  overflow: hidden;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  color: inherit;
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+[tabindex="0"]:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 4px;
+}
+
+::selection {
+  background: var(--purple);
+  color: #fff;
+}
+
+.container,
+.nav-container {
+  width: min(100%, var(--container));
+  padding-inline: 2rem;
+  margin-inline: auto;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 10000;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.8rem 1rem;
+  background: var(--yellow);
+  color: var(--dark);
+  font-weight: 700;
+  transform: translateY(-160%);
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}

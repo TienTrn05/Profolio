@@ -1,0 +1,158 @@
+/* Case-study dialog. */
+
+/* Case study dialog */
+
+.case-dialog {
+  width: min(calc(100% - 2rem), 82rem);
+  max-height: calc(100svh - 2rem);
+  border: 0;
+  padding: 0;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.case-dialog::backdrop {
+  background: rgba(5, 12, 23, 0.84);
+  backdrop-filter: blur(8px);
+}
+
+.case-dialog-shell {
+  position: relative;
+  padding: clamp(1.5rem, 5vw, 4rem);
+}
+
+.case-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+  cursor: pointer;
+}
+
+.case-close svg {
+  width: 1.15rem;
+}
+
+.case-dialog h2 {
+  max-width: 52rem;
+  margin: 1.5rem 0 0;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.25;
+  letter-spacing: -0.045em;
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.75rem;
+}
+
+.case-grid article {
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+}
+
+.case-grid article > span {
+  color: var(--purple);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.875rem;
+}
+
+.case-grid h3 {
+  margin: 1rem 0 0;
+  font-size: 1.15rem;
+}
+
+.case-grid p {
+  margin: 0.65rem 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.architecture-wrap {
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+
+.architecture-index {
+  color: var(--purple);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.875rem;
+}
+
+.architecture-wrap > h3 {
+  margin: 0.75rem 0 0;
+  font-size: 1.15rem;
+}
+
+.architecture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border: 2px solid var(--border-soft);
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+
+.architecture > div {
+  min-width: 7rem;
+  border: 1px solid var(--border);
+  padding: 0.8rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.architecture small {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.architecture > svg {
+  flex: 0 0 auto;
+  width: 1rem;
+  color: var(--purple);
+}
+
+.case-dialog blockquote {
+  border-left: 4px solid var(--purple);
+  padding-left: 1.25rem;
+  margin: 2rem 0 0;
+}
+
+.case-dialog blockquote > span {
+  color: var(--purple);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.875rem;
+  font-style: normal;
+}
+
+.case-dialog blockquote p {
+  margin: 0.6rem 0 0;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.image-fallback {
+  display: grid !important;
+  place-items: center;
+  background: linear-gradient(145deg, var(--purple), var(--yellow)) !important;
+  color: #fff;
+  font-family: "JetBrains Mono", monospace;
+  font-size: clamp(1.25rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
