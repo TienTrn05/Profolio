@@ -4,7 +4,7 @@ A modern personal portfolio built with **React 19** and **Vite**, showcasing my 
 
 ## 🌐 Live Demo
 
-[View Live Portfolio](https://your-portfolio.vercel.app)
+[View Live Portfolio](https://profolio-xi-pied.vercel.app/)
 
 ## 🛠️ Tech Stack
 
