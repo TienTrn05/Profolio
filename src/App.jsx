@@ -12,7 +12,7 @@ import {
 import { usePortfolioEffects } from "./hooks/usePortfolioEffects";
 
 export default function App() {
-  const [isCaseStudyOpen, setCaseStudyOpen] = useState(false);
+  const [activeCaseStudy, setActiveCaseStudy] = useState(null);
   usePortfolioEffects();
   return (
     <>
@@ -24,15 +24,16 @@ export default function App() {
       <main id="main-content">
         <Hero />
         <About />
-        <Projects onOpenCaseStudy={() => setCaseStudyOpen(true)} />
+        <Projects onOpenCaseStudy={setActiveCaseStudy} />
         <Skills />
         <LearningJourney />
         <Principles />
       </main>
       <SiteFooter />
       <CaseStudyDialog
-        open={isCaseStudyOpen}
-        onClose={() => setCaseStudyOpen(false)}
+        open={activeCaseStudy !== null}
+        caseStudy={activeCaseStudy}
+        onClose={() => setActiveCaseStudy(null)}
       />
       <div className="sr-only" aria-live="polite" data-live-region />
     </>

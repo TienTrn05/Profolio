@@ -7,6 +7,24 @@
   gap: 1.75rem;
 }
 
+.project-list-region:not(.is-expanded) .project-panel:nth-child(n + 4) {
+  display: none;
+}
+
+.project-list-region.is-expanded {
+  height: var(--project-list-height);
+  padding-right: 0.75rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: var(--purple) var(--surface-soft);
+  scrollbar-gutter: stable;
+}
+
+.project-list-region:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 0.4rem;
+}
+
 .project-panel {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(25rem, 41.875rem);
@@ -47,6 +65,10 @@
 
 .project-kicker-blue {
   color: #4f60c8;
+}
+
+.project-kicker-red {
+  color: #e5484d;
 }
 
 .project-status {
@@ -561,6 +583,16 @@
   background: linear-gradient(145deg, #081331 0%, #242060 45%, #6c258f 100%);
 }
 
+.project-media-health {
+  background:
+    radial-gradient(
+      circle at 76% 18%,
+      rgba(255, 255, 255, 0.18),
+      transparent 28%
+    ),
+    linear-gradient(145deg, #071b2f 0%, #0d5766 52%, #17a673 100%);
+}
+
 .appstore-shot-stack {
   position: absolute;
   inset: 2rem 1.5rem 4.6rem;
@@ -636,6 +668,65 @@
 }
 
 .work-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.85rem;
   margin-top: 1.75rem;
   text-align: center;
+}
+
+.button-github {
+  width: min(100%, 18rem);
+  border-color: #30363d;
+  padding: 0.55rem 0.8rem;
+  background:
+    radial-gradient(
+      circle at 15% 0%,
+      rgba(153, 79, 245, 0.35),
+      transparent 42%
+    ),
+    #0d1117;
+  color: #fff;
+  box-shadow: 0.5rem 0.5rem 0 rgba(153, 79, 245, 0.2);
+}
+
+.button-github:hover {
+  border-color: var(--purple);
+  box-shadow: 0.25rem 0.25rem 0 rgba(153, 79, 245, 0.32);
+}
+
+.button-github-mark {
+  display: grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.button-github-mark svg {
+  width: 1.15rem;
+}
+
+.button-github-copy {
+  display: grid;
+  flex: 1;
+  justify-items: start;
+  gap: 0.15rem;
+  text-align: left;
+}
+
+.button-github-copy small {
+  color: #b7a2d4;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+}
+
+.button-github-copy strong {
+  font-size: 0.95rem;
 }
