@@ -15,17 +15,20 @@ export default function Skills() {
             <span aria-hidden="true">✦</span>
             <span>Skills &amp; Focus</span>
           </div>
-          <h2 id="skills-title">A focused toolkit for complete products</h2>
+          <h2 id="skills-title">
+            A full-stack path built on real Flutter project experience
+          </h2>
           <p>
-            I build usable interfaces, connect them to Node.js services and keep
-            the flow understandable from screen to database.
+            Flutter is where I have shipped projects. React.js and
+            TypeScript/JavaScript are my frontend direction; Node.js,
+            Express.js, RESTful APIs and MySQL are my backend direction.
           </p>
         </header>
         <div className="skill-console" data-reveal>
           <div className="skill-console-topline">
-            <span>CORE TOOLKIT / 2026</span>
+            <span>FULL-STACK TOOLKIT / 2026</span>
             <p>
-              <Icon name="circle-check" /> Project-backed practice
+              <Icon name="circle-check" /> Project experience + active learning
             </p>
           </div>
           <div className="skill-core-grid">
@@ -35,24 +38,26 @@ export default function Skills() {
                   <Icon name="monitor-smartphone" />
                 </span>
                 <div>
-                  <small>CURRENT STRENGTH</small>
-                  <h3>Interface &amp; Mobile</h3>
+                  <small>FRONTEND</small>
+                  <h3>Flutter &amp; React.js</h3>
                 </div>
               </header>
               <p>
-                Responsive screens and stateful product flows built around real
-                user tasks.
+                Flutter is my project-backed strength. I&apos;m extending that
+                interface experience into React.js web applications.
               </p>
               <ul
                 className="skill-tags"
                 aria-label="Interface and mobile tools"
               >
                 <li>Flutter</li>
-                <li>React</li>
                 <li>Dart</li>
+                <li>React.js</li>
+                <li>TypeScript</li>
+                <li>JavaScript</li>
                 <li>HTML</li>
                 <li>CSS</li>
-                <li>JavaScript</li>
+                <li>Tailwind CSS</li>
               </ul>
               <div className="skill-proof">
                 <span>USED IN</span>
@@ -65,18 +70,19 @@ export default function Skills() {
                   <Icon name="database-zap" />
                 </span>
                 <div>
-                  <small>BACKEND FOCUS</small>
-                  <h3>Node.js &amp; Data</h3>
+                  <small>BACKEND</small>
+                  <h3>Node.js &amp; Express.js</h3>
                 </div>
               </header>
               <p>
-                REST services, authentication and persistent data that support
-                the product experience.
+                My backend learning focuses on REST APIs, authentication and
+                persistent data for complete web product flows.
               </p>
               <ul className="skill-tags" aria-label="Backend and data tools">
                 <li>Node.js</li>
-                <li>REST APIs</li>
-                <li>SQL</li>
+                <li>Express.js</li>
+                <li>RESTful APIs</li>
+                <li>MySQL</li>
                 <li>Supabase</li>
                 <li>Gemini API</li>
               </ul>
@@ -126,13 +132,13 @@ export default function Skills() {
             </p>
             <div>
               <span>
-                <Icon name="git-branch" /> Git workflow
+                <Icon name="git-branch" /> Git &amp; GitHub
               </span>
               <span>
-                <Icon name="boxes" /> BLoC / State
+                <Icon name="braces" /> Postman
               </span>
               <span>
-                <Icon name="file-check-2" /> Documentation
+                <Icon name="list-checks" /> Trello
               </span>
             </div>
           </div>

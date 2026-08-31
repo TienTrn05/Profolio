@@ -76,7 +76,7 @@ export default function LearningJourney() {
       aria-labelledby="building-title"
     >
       <div className="container">
-        <header className="section-heading section-heading-center" data-reveal>
+        <header className="section-heading section-heading-center">
           <div className="section-badge">
             <span aria-hidden="true">✦</span>
             <span>Now</span>
@@ -89,7 +89,6 @@ export default function LearningJourney() {
         </header>
         <div
           className="learning-slider"
-          data-reveal
           role="region"
           aria-roledescription="carousel"
           aria-label="Current learning topics"
@@ -171,7 +170,7 @@ export default function LearningJourney() {
             </p>
           </div>
         </div>
-        <p className="system-status" data-reveal>
+        <p className="system-status">
           <span>LEARNING: IN PROGRESS</span>
           <span>FOCUS: FULL-STACK FOUNDATIONS</span>
           <span>TOPICS: 05</span>

@@ -49,14 +49,6 @@
   .desktop-nav {
     gap: 1.3rem;
   }
-
-  .about-facts {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .hero-role-tag {
-    display: none;
-  }
 }
 
 @media (max-width: 1023px) {
@@ -84,10 +76,7 @@
 
   .hero-media {
     min-height: 43rem;
-  }
-
-  .about-facts {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 0 2rem 2rem;
   }
 
   .fullstack-split {
@@ -237,30 +226,24 @@
     flex: 1 1 12rem;
   }
 
-  .candidate-summary {
-    width: 100%;
-    margin-top: 2.5rem;
-  }
-
   .hero-media {
     min-height: 36rem;
   }
 
-  .hero-name {
-    top: 1.5rem;
-    font-size: 3rem;
+  .hero-capabilities {
+    grid-template-columns: 1fr;
   }
 
-  .about-facts,
+  .hero-capabilities article + article {
+    border-top: 1px solid var(--border);
+    border-left: 0;
+  }
+
   .evidence-summary,
   .building-grid,
   .contact-grid,
   .footer-contact-grid {
     grid-template-columns: 1fr;
-  }
-
-  .about-facts {
-    gap: 1rem;
   }
 
   .fullstack-system-topline {
@@ -518,26 +501,27 @@
     flex-basis: auto;
   }
 
-  .candidate-details {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .candidate-detail,
-  .candidate-detail:first-child,
-  .candidate-detail:last-child {
-    border-top: 1px solid var(--border-soft);
-    border-left: 0;
-    padding: 1rem 0 0;
-  }
-
-  .candidate-detail:first-child {
-    border-top: 0;
-    padding-top: 0;
-  }
-
   .hero-media {
     min-height: 31rem;
+    margin-inline: 1rem;
+  }
+
+  .hero-gpa-card {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .hero-identity-card {
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .hero-identity-card strong {
+    text-align: left;
   }
 
   .section-heading {
@@ -583,6 +567,29 @@
   }
 
   .contact-actions .button {
+    width: 100%;
+  }
+
+  .contact-dialog-header {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    padding: 1.15rem;
+  }
+
+  .contact-dialog-icon {
+    width: 2.7rem;
+    height: 2.7rem;
+  }
+
+  .contact-dialog-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .contact-form-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .contact-send {
     width: 100%;
   }
 

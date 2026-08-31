@@ -1,8 +1,13 @@
 import Icon from "../ui/Icon";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const CONTACT_EMAIL = "ngoctien20022005@gmail.com";
 
 export default function SiteFooter() {
   const [copyLabel, setCopyLabel] = useState("Copy Email");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+  const contactDialogRef = useRef(null);
 
   useEffect(() => {
     if (copyLabel === "Copy Email") return undefined;
@@ -12,12 +17,32 @@ export default function SiteFooter() {
 
   const copyEmail = async () => {
     try {
-      await navigator.clipboard.writeText("ngoctien20022005@gmail.com");
+      await navigator.clipboard.writeText(CONTACT_EMAIL);
       setCopyLabel("Email copied");
     } catch {
       setCopyLabel("Could not copy email");
     }
   };
+
+  const openContactDialog = () => {
+    contactDialogRef.current?.showModal();
+    document.body.classList.add("dialog-open");
+  };
+
+  const closeContactDialog = () => {
+    contactDialogRef.current?.close();
+    document.body.classList.remove("dialog-open");
+  };
+
+  const sendEmail = (event) => {
+    event.preventDefault();
+    const emailUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject.trim())}&body=${encodeURIComponent(message.trim())}`;
+    closeContactDialog();
+    window.location.href = emailUrl;
+  };
+
+  useEffect(() => () => document.body.classList.remove("dialog-open"), []);
+
   return (
     <footer className="site-footer" id="contact">
       <div className="contact-intro">
@@ -29,13 +54,14 @@ export default function SiteFooter() {
               contribute and grow.
             </p>
             <div className="contact-actions">
-              <a
+              <button
                 className="button button-primary"
-                href="mailto:ngoctien20022005@gmail.com"
+                type="button"
+                onClick={openContactDialog}
               >
                 <span>Say Hello</span>
                 <Icon name="send" />
-              </a>
+              </button>
               <button
                 className="button button-outline-light"
                 type="button"
@@ -158,6 +184,76 @@ export default function SiteFooter() {
           </div>
         </div>
       </div>
+      <dialog
+        ref={contactDialogRef}
+        className="contact-dialog"
+        aria-labelledby="contact-dialog-title"
+        onClose={() => document.body.classList.remove("dialog-open")}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) closeContactDialog();
+        }}
+      >
+        <div className="contact-dialog-shell">
+          <header className="contact-dialog-header">
+            <span className="contact-dialog-icon" aria-hidden="true">
+              <Icon name="mail" />
+            </span>
+            <div>
+              <p>START A CONVERSATION</p>
+              <h2 id="contact-dialog-title">Say hello.</h2>
+            </div>
+            <button
+              className="contact-dialog-close"
+              type="button"
+              aria-label="Close contact form"
+              onClick={closeContactDialog}
+            >
+              <Icon name="x" />
+            </button>
+          </header>
+
+          <form className="contact-form" onSubmit={sendEmail}>
+            <div className="contact-recipient">
+              <span>TO</span>
+              <strong>{CONTACT_EMAIL}</strong>
+            </div>
+            <label htmlFor="contact-subject">
+              <span>Title</span>
+              <input
+                id="contact-subject"
+                name="subject"
+                type="text"
+                value={subject}
+                maxLength={120}
+                placeholder="Internship opportunity, project idea..."
+                autoFocus
+                required
+                onChange={(event) => setSubject(event.target.value)}
+              />
+            </label>
+            <label htmlFor="contact-message">
+              <span>Message</span>
+              <textarea
+                id="contact-message"
+                name="message"
+                value={message}
+                rows={7}
+                maxLength={3000}
+                placeholder="Tell me a little about the role or project..."
+                required
+                onChange={(event) => setMessage(event.target.value)}
+              />
+            </label>
+            <div className="contact-form-footer">
+              <p>Your email app will open with this message ready to send.</p>
+              <button className="contact-send" type="submit">
+                <span>Send Message</span>
+                <Icon name="send" />
+              </button>
+            </div>
+          </form>
+        </div>
+      </dialog>
     </footer>
   );
 }

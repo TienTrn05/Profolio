@@ -39,7 +39,26 @@ export function usePortfolioEffects() {
         { rootMargin: "0px 0px -80px" },
       );
       revealElements.forEach((element) => observer.observe(element));
-      cleanups.push(() => observer.disconnect());
+
+      const mutationObserver = new MutationObserver((records) => {
+        records.forEach((record) => {
+          record.addedNodes.forEach((node) => {
+            if (!(node instanceof Element)) return;
+            if (node.matches("[data-reveal]")) observer.observe(node);
+            node
+              .querySelectorAll("[data-reveal]")
+              .forEach((element) => observer.observe(element));
+          });
+        });
+      });
+      mutationObserver.observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
+      cleanups.push(() => {
+        mutationObserver.disconnect();
+        observer.disconnect();
+      });
     } else {
       revealElements.forEach((element) => element.classList.add("is-revealed"));
     }

@@ -10,10 +10,6 @@
   animation: hero-content-enter 700ms 170ms var(--ease) both;
 }
 
-.hero-copy.is-revealed .hero-role {
-  animation: hero-content-enter 700ms 260ms var(--ease) both;
-}
-
 .hero-copy.is-revealed .hero-description {
   animation: hero-content-enter 700ms 350ms var(--ease) both;
 }
@@ -22,8 +18,12 @@
   animation: hero-content-enter 700ms 440ms var(--ease) both;
 }
 
-.hero-copy.is-revealed .candidate-summary {
+.hero-copy.is-revealed .hero-capabilities {
   animation: hero-content-enter 750ms 550ms var(--ease) both;
+}
+
+.hero-copy.is-revealed .hero-actions {
+  animation-delay: 650ms;
 }
 
 .evidence-summary article {
@@ -117,25 +117,18 @@
 }
 
 .section-heading.is-revealed .section-badge,
-.values-header.is-revealed .section-badge,
-.section-about .container.is-revealed .section-badge {
+.values-header.is-revealed .section-badge {
   animation: section-text-enter 650ms var(--ease) both;
 }
 
 .section-heading.is-revealed h2,
-.values-header.is-revealed h2,
-.section-about .container.is-revealed .about-title {
+.values-header.is-revealed h2 {
   animation: section-text-enter 720ms 110ms var(--ease) both;
 }
 
 .section-heading.is-revealed > p,
-.values-header.is-revealed > p,
-.section-about .container.is-revealed .about-copy {
+.values-header.is-revealed > p {
   animation: section-text-enter 720ms 220ms var(--ease) both;
-}
-
-.section-about .container.is-revealed .about-facts {
-  animation: section-text-enter 760ms 330ms var(--ease) both;
 }
 
 .project-panel.is-revealed .project-topline {
