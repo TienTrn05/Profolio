@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 const navigation = [
   ["home", "Home"],
   ["work", "Projects"],
-  ["stack", "Skills"],
-  ["building", "Learning"],
+  ["stack", "Capabilities"],
+  ["building", "Next"],
 ];
 
 export default function SiteHeader() {

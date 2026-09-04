@@ -1,80 +1,40 @@
 import Icon from "../ui/Icon";
-import { useState } from "react";
+import ProjectTags from "../ui/ProjectTags";
 
 export default function MoneyBoysProject({ onOpenCaseStudy }) {
-  const [activeView, setActiveView] = useState("product");
   return (
     <article className="project-panel" data-project="moneyboys" data-reveal>
       <div className="project-content">
         <div className="project-topline">
           <p className="project-kicker project-kicker-yellow">MoneyBoys</p>
-          <span className="project-status">
-            <span />
-            <span>Public Team Repository</span>
-          </span>
+          <ProjectTags items={["University Team Project", "Finance App"]} />
         </div>
-        <div
-          className="view-switch"
-          role="tablist"
-          aria-label="MoneyBoys project view"
-        >
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeView === "product"}
-            onClick={() => setActiveView("product")}
-          >
-            Product View
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeView === "technical"}
-            onClick={() => setActiveView("technical")}
-          >
-            Technical View
-          </button>
-        </div>
-        <div
-          className={`project-view${activeView === "product" ? " is-visible" : ""}`}
-          role="tabpanel"
-          hidden={activeView !== "product"}
-        >
-          <h3>Track spending and budgets in one finance app.</h3>
+        <div className="project-view is-visible">
+          <h3>A shared data layer for everyday finance decisions.</h3>
           <p>
-            A team-built Flutter app for recording expenses, managing budgets,
-            reviewing spending charts and requesting Gemini-supported guidance,
-            with finance data stored in Supabase.
+            In a team Flutter project, I worked on data models and CRUD flows
+            that connect transactions, budgets and categories to the product
+            experience and its spending insights.
           </p>
-          <ul className="feature-chips">
-            <li>Expense tracking</li>
-            <li>Budget planning</li>
-            <li>Spending insights</li>
-          </ul>
         </div>
-        <div
-          className={`project-view${activeView === "technical" ? " is-visible" : ""}`}
-          role="tabpanel"
-          hidden={activeView !== "technical"}
-        >
-          <h3>Feature modules backed by Supabase services.</h3>
-          <p>
-            Flutter screens use Cubit/BLoC where integrated and dedicated
-            services for authentication, spending, budgets, categories and
-            reports. Supabase provides PostgreSQL-backed persistence, FL Chart
-            visualizes spending and Gemini supports optional financial guidance.
-          </p>
-          <dl className="technical-meta">
-            <div>
-              <dt>Contribution</dt>
-              <dd>Auth · Supabase CRUD · finance data services</dd>
-            </div>
-            <div>
-              <dt>Stack</dt>
-              <dd>Flutter · Supabase · FL Chart · Gemini</dd>
-            </div>
-          </dl>
-        </div>
+        <dl className="technical-meta project-evidence">
+          <div>
+            <dt>Contribution</dt>
+            <dd>Finance data models · CRUD operations · database work</dd>
+          </div>
+          <div>
+            <dt>Engineering focus</dt>
+            <dd>Separate feature state from reusable finance data services</dd>
+          </div>
+          <div>
+            <dt>Tool roles</dt>
+            <dd>Supabase for data · BLoC for state · FL Chart for insights</dd>
+          </div>
+          <div>
+            <dt>Outcome</dt>
+            <dd>Working team prototype · public repository</dd>
+          </div>
+        </dl>
         <div
           className="project-system-map"
           aria-label="MoneyBoys engineering layers"

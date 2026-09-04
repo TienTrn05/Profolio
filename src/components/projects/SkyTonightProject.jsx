@@ -1,80 +1,42 @@
 import Icon from "../ui/Icon";
-import { useState } from "react";
+import ProjectTags from "../ui/ProjectTags";
 
 export default function SkyTonightProject() {
-  const [activeView, setActiveView] = useState("product");
   return (
     <article className="project-panel" data-project="sky-tonight" data-reveal>
       <div className="project-content">
         <div className="project-topline">
           <p className="project-kicker project-kicker-blue">Sky Tonight</p>
-          <span className="project-status">
-            <Icon name="lock-keyhole" />
-            <span>Repository Status Unverified</span>
-          </span>
+          <ProjectTags items={["Team Project", "Astronomy App"]} />
         </div>
-        <div
-          className="view-switch"
-          role="tablist"
-          aria-label="Sky Tonight project view"
-        >
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeView === "product"}
-            onClick={() => setActiveView("product")}
-          >
-            Product View
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeView === "technical"}
-            onClick={() => setActiveView("technical")}
-          >
-            Technical View
-          </button>
-        </div>
-        <div
-          className={`project-view${activeView === "product" ? " is-visible" : ""}`}
-          role="tabpanel"
-          hidden={activeView !== "product"}
-        >
+        <div className="project-view is-visible">
           <h3>Plan what is visible in the night sky.</h3>
           <p>
-            A Flutter astronomy companion that combines location, date, weather
-            and catalog-backed calculations to surface visible stars, planets,
-            constellations and deep-sky objects.
+            I worked on a Flutter dashboard that combines location, time and
+            catalog-backed calculations to surface relevant celestial objects
+            for an observing session.
           </p>
-          <ul className="feature-chips">
-            <li>Celestial visibility</li>
-            <li>Location selection</li>
-            <li>Multi-criteria sorting</li>
-          </ul>
         </div>
-        <div
-          className={`project-view${activeView === "technical" ? " is-visible" : ""}`}
-          role="tabpanel"
-          hidden={activeView !== "technical"}
-        >
-          <h3>A location-aware, catalog-driven dashboard.</h3>
-          <p>
-            Flutter coordinates location and time input with services that load
-            bundled catalogs, calculate visibility, call HTTP data sources and
-            cache cards locally. A separate iOS SceneKit renderer exists, but is
-            not connected to the current default route.
-          </p>
-          <dl className="technical-meta">
-            <div>
-              <dt>Contribution</dt>
-              <dd>Dashboard · location flows · services · sorting</dd>
-            </div>
-            <div>
-              <dt>Stack</dt>
-              <dd>Flutter · Dart · HTTP · SharedPreferences</dd>
-            </div>
-          </dl>
-        </div>
+        <dl className="technical-meta project-evidence">
+          <div>
+            <dt>Contribution</dt>
+            <dd>Dashboard · location flows · data services · sorting</dd>
+          </div>
+          <div>
+            <dt>Engineering focus</dt>
+            <dd>
+              Derive the visible list from location, time and catalog data
+            </dd>
+          </div>
+          <div>
+            <dt>Tool roles</dt>
+            <dd>Flutter for UI · HTTP for data · local storage for cache</dd>
+          </div>
+          <div>
+            <dt>Project context</dt>
+            <dd>Team repository · interface shown as visual reference</dd>
+          </div>
+        </dl>
         <div
           className="project-system-map"
           aria-label="Sky Tonight engineering layers"

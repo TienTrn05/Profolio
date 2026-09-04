@@ -36,7 +36,7 @@ export function usePortfolioEffects() {
             (entry) =>
               entry.isIntersecting && entry.target.classList.add("is-revealed"),
           ),
-        { rootMargin: "0px 0px -80px" },
+        { rootMargin: "0px" },
       );
       revealElements.forEach((element) => observer.observe(element));
 
@@ -79,6 +79,73 @@ export function usePortfolioEffects() {
       image.addEventListener("error", replace, { signal, once: true });
       if (image.complete && image.naturalWidth === 0) replace();
     });
+
+    const canUsePointerMotion = matchMedia("(pointer: fine)").matches;
+    const motionIsReduced = () =>
+      document.documentElement.dataset.motion === "reduced";
+
+    if (canUsePointerMotion) {
+      const heroMedia = document.querySelector("[data-hero-media]");
+      const updateHeroMotion = (event) => {
+        if (motionIsReduced()) return;
+        const rect = heroMedia.getBoundingClientRect();
+        const x = Math.min(
+          Math.max((event.clientX - rect.left) / rect.width, 0),
+          1,
+        );
+        const y = Math.min(
+          Math.max((event.clientY - rect.top) / rect.height, 0),
+          1,
+        );
+        heroMedia.style.setProperty("--spot-x", `${x * 100}%`);
+        heroMedia.style.setProperty("--spot-y", `${y * 100}%`);
+        heroMedia.style.setProperty("--hero-shift-x", `${(x - 0.5) * -12}px`);
+        heroMedia.style.setProperty("--hero-shift-y", `${(y - 0.5) * -10}px`);
+      };
+      const resetHeroMotion = () => {
+        heroMedia.style.setProperty("--spot-x", "50%");
+        heroMedia.style.setProperty("--spot-y", "45%");
+        heroMedia.style.setProperty("--hero-shift-x", "0px");
+        heroMedia.style.setProperty("--hero-shift-y", "0px");
+      };
+      if (heroMedia) {
+        heroMedia.addEventListener("pointermove", updateHeroMotion, {
+          passive: true,
+          signal,
+        });
+        heroMedia.addEventListener("pointerleave", resetHeroMotion, { signal });
+      }
+
+      document.querySelectorAll(".project-panel").forEach((panel) => {
+        const updateProjectMotion = (event) => {
+          if (motionIsReduced()) return;
+          const rect = panel.getBoundingClientRect();
+          const x = Math.min(
+            Math.max((event.clientX - rect.left) / rect.width, 0),
+            1,
+          );
+          const y = Math.min(
+            Math.max((event.clientY - rect.top) / rect.height, 0),
+            1,
+          );
+          panel.style.setProperty("--project-spot-x", `${x * 100}%`);
+          panel.style.setProperty("--project-spot-y", `${y * 100}%`);
+          panel.style.setProperty("--project-shift-x", `${(x - 0.5) * -8}px`);
+          panel.style.setProperty("--project-shift-y", `${(y - 0.5) * -6}px`);
+        };
+        const resetProjectMotion = () => {
+          panel.style.setProperty("--project-spot-x", "70%");
+          panel.style.setProperty("--project-spot-y", "30%");
+          panel.style.setProperty("--project-shift-x", "0px");
+          panel.style.setProperty("--project-shift-y", "0px");
+        };
+        panel.addEventListener("pointermove", updateProjectMotion, {
+          passive: true,
+          signal,
+        });
+        panel.addEventListener("pointerleave", resetProjectMotion, { signal });
+      });
+    }
 
     const process = document.querySelector("[data-process]");
     const processProgress = document.querySelector("[data-process-progress]");

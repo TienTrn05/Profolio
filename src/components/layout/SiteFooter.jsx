@@ -90,22 +90,19 @@ export default function SiteFooter() {
                   {"  "}education:{" "}
                   <span className="code-yellow">"Fourth-year IT student"</span>,
                   {"\n"}
-                  {"  "}targetRole:{" "}
-                  <span className="code-yellow">
-                    "Full-stack Developer Intern"
-                  </span>
-                  ,{"\n"}
-                  {"  "}mainTech: [{"\n"}
+                  {"  "}positioning:{" "}
+                  <span className="code-yellow">"Full-stack Developer"</span>,
+                  {"\n"}
+                  {"  "}coreStack: [{"\n"}
                   {"    "}
-                  <span className="code-yellow">"Flutter"</span>,{" "}
                   <span className="code-yellow">"React"</span>,{" "}
                   <span className="code-yellow">"Node.js"</span>,{" "}
                   <span className="code-yellow">"SQL"</span>
                   {"\n"}
                   {"  "}],{"\n"}
-                  {"  "}funFact:{" "}
+                  {"  "}currentDepth:{" "}
                   <span className="code-yellow">
-                    "I turn class ideas into working apps"
+                    "performance, reliability, scaling"
                   </span>
                   ,{"\n"}
                   {"  "}available: <span className="code-purple">true</span>
@@ -122,7 +119,7 @@ export default function SiteFooter() {
       </div>
       <div className="footer-meta">
         <div className="container">
-          <div className="footer-contact-grid">
+          <div className="footer-contact-grid" data-reveal>
             <div>
               <Icon name="phone" />
               <p>Available for a quick conversation.</p>
@@ -137,11 +134,11 @@ export default function SiteFooter() {
             </div>
             <div>
               <Icon name="map-pin" />
-              <p>Building and learning from.</p>
+              <p>Based in.</p>
               <strong>Da Nang, Vietnam</strong>
             </div>
           </div>
-          <div className="footer-bottom">
+          <div className="footer-bottom" data-reveal>
             <div>
               <p>
                 <span>Designed and engineered by Trần Ngọc Tiến.</span>©{" "}

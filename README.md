@@ -1,6 +1,6 @@
 # Tiến Portfolio
 
-A modern personal portfolio built with **React 19** and **Vite**, showcasing my projects, learning journey, and technical skills.
+A modern personal portfolio built with **React 19** and **Vite**, showcasing project ownership, evidence-backed capabilities, and my next engineering direction.
 
 ## 🌐 Live Demo
 
@@ -18,8 +18,9 @@ A modern personal portfolio built with **React 19** and **Vite**, showcasing my 
 - Responsive and modern portfolio design
 - Interactive navigation menu
 - Light/dark theme switching
-- Project tabs and project showcase
-- Interactive learning slider
+- Project case studies with ownership and implementation evidence
+- Capability map connecting tools to real project outcomes
+- Compact performance, reliability, and scaling roadmap
 - Dialog and modal components
 - Clipboard functionality
 - Scroll-based animations using `IntersectionObserver`
@@ -31,7 +32,6 @@ A modern personal portfolio built with **React 19** and **Vite**, showcasing my 
 src/
 ├── components/
 │   ├── layout/
-│   ├── learning/
 │   ├── overlays/
 │   ├── projects/
 │   ├── sections/
@@ -78,7 +78,7 @@ npm run build
 
 ## 🧩 Architecture
 
-The project follows a modular component-based architecture. UI elements, layouts, project sections, learning components, overlays, and reusable hooks are separated into dedicated directories to keep the codebase maintainable and scalable.
+The project follows a modular component-based architecture. UI elements, layouts, project sections, overlays, and reusable hooks are separated into dedicated directories to keep the codebase maintainable and scalable.
 
 The application relies entirely on React state and event handling for interactive features, with proper effect cleanup for browser APIs such as `IntersectionObserver`.
 

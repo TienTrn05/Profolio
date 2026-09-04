@@ -1,8 +1,7 @@
 import Icon from "../ui/Icon";
-import { useState } from "react";
+import ProjectTags from "../ui/ProjectTags";
 
 export default function TeleprompterProject() {
-  const [activeView, setActiveView] = useState("product");
   return (
     <article className="project-panel" data-project="teleprompter" data-reveal>
       <div className="project-content">
@@ -10,73 +9,34 @@ export default function TeleprompterProject() {
           <p className="project-kicker project-kicker-purple">
             Mobile Teleprompter
           </p>
-          <span className="project-status">
-            <Icon name="lock-keyhole" />
-            <span>Private Team Repository</span>
-          </span>
+          <ProjectTags items={["Team Project", "In Development"]} />
         </div>
-        <div
-          className="view-switch"
-          role="tablist"
-          aria-label="Mobile Teleprompter project view"
-        >
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeView === "product"}
-            onClick={() => setActiveView("product")}
-          >
-            Product View
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeView === "technical"}
-            onClick={() => setActiveView("technical")}
-          >
-            Technical View
-          </button>
-        </div>
-        <div
-          className={`project-view${activeView === "product" ? " is-visible" : ""}`}
-          role="tabpanel"
-          hidden={activeView !== "product"}
-        >
-          <h3>Mobile teleprompter and recording studio.</h3>
+        <div className="project-view is-visible">
+          <h3>One mobile workflow from script to finished video.</h3>
           <p>
-            A Flutter mobile app for organizing scripts, reading with adjustable
-            auto-scroll, recording through the device camera and managing
-            captured media with a local editing workflow.
+            I built script management, AI-assisted writing and an on-device
+            editing workflow so creators can prepare, record and refine content
+            without leaving the app.
           </p>
-          <ul className="feature-chips">
-            <li>Script library</li>
-            <li>Adjustable auto-scroll</li>
-            <li>Mobile media editor</li>
-          </ul>
         </div>
-        <div
-          className={`project-view${activeView === "technical" ? " is-visible" : ""}`}
-          role="tabpanel"
-          hidden={activeView !== "technical"}
-        >
-          <h3>Feature-based Flutter with local-first storage.</h3>
-          <p>
-            Flutter feature modules use Cubit state and repositories backed by
-            SharedPreferences. Camera plugins handle capture, while FFmpeg
-            renders trim, resize, watermark and subtitle edits. AI writing
-            exists but requires external proxy configuration.
-          </p>
-          <dl className="technical-meta">
-            <div>
-              <dt>Contribution</dt>
-              <dd>Script management · AI writing · media editing</dd>
-            </div>
-            <div>
-              <dt>Stack</dt>
-              <dd>Flutter · BLoC · Camera · FFmpeg</dd>
-            </div>
-          </dl>
-        </div>
+        <dl className="technical-meta project-evidence">
+          <div>
+            <dt>Contribution</dt>
+            <dd>Script library · AI writing · mobile media editing</dd>
+          </div>
+          <div>
+            <dt>Engineering focus</dt>
+            <dd>Keep core writing and project state local-first</dd>
+          </div>
+          <div>
+            <dt>Tool roles</dt>
+            <dd>BLoC for state · Camera for capture · FFmpeg for transforms</dd>
+          </div>
+          <div>
+            <dt>Project context</dt>
+            <dd>Team project · repository private · UI shown as reference</dd>
+          </div>
+        </dl>
         <div
           className="project-system-map"
           aria-label="Mobile Teleprompter engineering layers"

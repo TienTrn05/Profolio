@@ -2,8 +2,8 @@ import { useRef, useState } from "react";
 import Icon from "../ui/Icon";
 import HealthMonitorProject from "../projects/HealthMonitorProject";
 import MoneyBoysProject from "../projects/MoneyBoysProject";
-import TeleprompterProject from "../projects/TeleprompterProject";
 import SkyTonightProject from "../projects/SkyTonightProject";
+import TeleprompterProject from "../projects/TeleprompterProject";
 
 export default function Projects({ onOpenCaseStudy }) {
   const [showMore, setShowMore] = useState(false);
@@ -34,7 +34,11 @@ export default function Projects({ onOpenCaseStudy }) {
             <span aria-hidden="true">✦</span>
             <span>Selected Work</span>
           </div>
-          <h2 id="work-title">Selected project work</h2>
+          <h2 id="work-title">Featured Projects</h2>
+          <p>
+            A closer look at what I built, how I contributed and the decisions
+            behind each project.
+          </p>
         </header>
         <div
           id="project-list"
@@ -54,9 +58,7 @@ export default function Projects({ onOpenCaseStudy }) {
             />
             <TeleprompterProject />
             <SkyTonightProject />
-            <HealthMonitorProject
-              onOpenCaseStudy={() => onOpenCaseStudy("health-monitor")}
-            />
+            <HealthMonitorProject />
           </div>
         </div>
         <div className="work-footer" data-reveal>

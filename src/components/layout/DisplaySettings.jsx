@@ -9,13 +9,19 @@ function storedValue(key, fallback) {
   }
 }
 
+function initialMotionPreference() {
+  const stored = storedValue("tien-portfolio-motion", null);
+  if (stored === "full" || stored === "reduced") return stored;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ? "reduced"
+    : "full";
+}
+
 export default function DisplaySettings() {
   const [theme, setTheme] = useState(() =>
     storedValue("tien-portfolio-theme", "light"),
   );
-  const [motion, setMotion] = useState(() =>
-    storedValue("tien-portfolio-motion", "full"),
-  );
+  const [motion, setMotion] = useState(initialMotionPreference);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;

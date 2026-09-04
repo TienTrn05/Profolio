@@ -28,7 +28,7 @@
 .project-panel {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(25rem, 41.875rem);
-  min-height: 31.25rem;
+  min-height: 32rem;
   border: 2px solid var(--border);
   background: var(--surface);
   overflow: hidden;
@@ -39,7 +39,7 @@
   min-width: 0;
   flex-direction: column;
   justify-content: center;
-  padding: 3.5rem;
+  padding: clamp(2.5rem, 4vw, 3.5rem);
 }
 
 .project-topline {
@@ -71,26 +71,32 @@
   color: #e5484d;
 }
 
-.project-status {
-  display: inline-flex;
-  align-items: center;
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 0.45rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.project-tags li {
+  border: 1px solid color-mix(in srgb, var(--purple) 28%, var(--border));
+  border-radius: 999px;
+  padding: 0.38rem 0.65rem;
+  background: color-mix(in srgb, var(--purple) 6%, var(--surface));
   color: var(--muted);
   font-family: "JetBrains Mono", monospace;
-  font-size: 0.875rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  line-height: 1.25;
   text-transform: uppercase;
 }
 
-.project-status > span:first-child {
-  width: 0.45rem;
-  height: 0.45rem;
-  border-radius: 50%;
-  background: #20be78;
-}
-
-.project-status svg {
-  width: 0.85rem;
-  height: 0.85rem;
+.project-tags li:first-child {
+  color: var(--purple);
 }
 
 .view-switch {
@@ -121,7 +127,7 @@
 
 .project-view h3 {
   margin: 1.25rem 0 0;
-  font-size: clamp(2.3rem, 2.8vw, 2.85rem);
+  font-size: clamp(2rem, 2.6vw, 2.65rem);
   line-height: 1.22;
   font-weight: 700;
   letter-spacing: normal;
@@ -176,6 +182,37 @@
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
+}
+
+.project-evidence {
+  gap: 0;
+  border-left: 3px solid var(--purple);
+  padding: 0.35rem 0 0.35rem 1rem;
+  background: color-mix(in srgb, var(--purple) 4%, transparent);
+}
+
+.project-evidence div {
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 1rem;
+  border-bottom: 1px solid var(--border-soft);
+  padding: 0.65rem 0.75rem 0.65rem 0;
+}
+
+.project-evidence div:last-child {
+  border-bottom: 0;
+}
+
+.project-evidence dt {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.project-evidence dd {
+  font-size: 0.82rem;
+  line-height: 1.55;
 }
 
 .project-system-map {
@@ -325,11 +362,12 @@
 }
 
 .project-panel:hover .project-media > img {
-  transform: scale(1.035);
+  transform: scale(1.035)
+    translate3d(var(--project-shift-x), var(--project-shift-y), 0);
 }
 
 .project-media-moneyboys {
-  min-height: 38rem;
+  min-height: 34rem;
   isolation: isolate;
   background: #080808;
 }
@@ -376,7 +414,8 @@
 }
 
 .project-panel:hover .project-media-moneyboys > .moneyboys-logo {
-  transform: scale(1.045);
+  transform: scale(1.045)
+    translate3d(var(--project-shift-x), var(--project-shift-y), 0);
 }
 
 .project-panel:hover .project-media-moneyboys > .moneyboys-runtime-shot {
@@ -412,7 +451,7 @@
 
 .project-media-repository {
   display: grid;
-  min-height: 38rem;
+  min-height: 34rem;
   place-items: center;
   isolation: isolate;
 }
@@ -545,7 +584,7 @@
 
 .project-media-appstore {
   display: grid;
-  min-height: 38rem;
+  min-height: 34rem;
   place-items: center;
   isolation: isolate;
 }

@@ -1,4 +1,60 @@
 import Icon from "../ui/Icon";
+
+const capabilities = [
+  {
+    icon: "panels-top-left",
+    area: "Web frontend",
+    title: "Responsive Web Interfaces",
+    description:
+      "I translate requirements into reusable components, clear interface states and responsive layouts that remain understandable as features grow.",
+    tools: [
+      ["React + TypeScript", "component-based application UI"],
+      ["HTML + CSS", "semantic and responsive structure"],
+      ["Tailwind CSS", "consistent interface implementation"],
+    ],
+    proof: "This React portfolio · full-stack builds",
+  },
+  {
+    icon: "server-cog",
+    area: "Backend & APIs",
+    title: "Backend Services & APIs",
+    description:
+      "I structure server-side logic around explicit REST contracts, validation, authentication and predictable error handling.",
+    tools: [
+      ["Node.js", "server runtime and application logic"],
+      ["Express", "routing, middleware and API boundaries"],
+      ["REST + Postman", "contracts and request verification"],
+    ],
+    proof: "Node.js API work · end-to-end application flows",
+  },
+  {
+    icon: "database-zap",
+    area: "Data & integration",
+    title: "Relational Data & Integrations",
+    description:
+      "I model relational data, implement CRUD operations and connect application services to databases and external APIs.",
+    tools: [
+      ["MySQL", "relational schemas and application queries"],
+      ["PostgreSQL / Supabase", "managed persistence and data flows"],
+      ["External APIs", "AI and third-party integrations"],
+    ],
+    proof: "MoneyBoys data work · service integrations",
+  },
+  {
+    icon: "git-branch",
+    area: "Delivery & collaboration",
+    title: "Delivery & Collaboration",
+    description:
+      "I keep work modular, document system boundaries and use repository workflows so teammates can review changes with shared context.",
+    tools: [
+      ["Git + GitHub", "branching and reviewable history"],
+      ["Vite", "fast web development and production builds"],
+      ["CI + static analysis", "repeatable repository checks"],
+    ],
+    proof: "This deployed portfolio · public repositories",
+  },
+];
+
 export default function Skills() {
   return (
     <section
@@ -13,135 +69,58 @@ export default function Skills() {
         >
           <div className="section-badge">
             <span aria-hidden="true">✦</span>
-            <span>Skills &amp; Focus</span>
+            <span>Technical Capabilities</span>
           </div>
-          <h2 id="skills-title">
-            A full-stack path built on real Flutter project experience
-          </h2>
+          <h2 id="skills-title">Full-stack Toolkit</h2>
           <p>
-            Flutter is where I have shipped projects. React.js and
-            TypeScript/JavaScript are my frontend direction; Node.js,
-            Express.js, RESTful APIs and MySQL are my backend direction.
+            Technologies and practices I use across frontend, backend, data and
+            delivery.
           </p>
         </header>
-        <div className="skill-console" data-reveal>
-          <div className="skill-console-topline">
-            <span>FULL-STACK TOOLKIT / 2026</span>
-            <p>
-              <Icon name="circle-check" /> Project experience + active learning
-            </p>
-          </div>
-          <div className="skill-core-grid">
-            <article className="skill-core skill-core-primary">
-              <header>
-                <span className="skill-core-icon" aria-hidden="true">
-                  <Icon name="monitor-smartphone" />
-                </span>
-                <div>
-                  <small>FRONTEND</small>
-                  <h3>Flutter &amp; React.js</h3>
-                </div>
-              </header>
-              <p>
-                Flutter is my project-backed strength. I&apos;m extending that
-                interface experience into React.js web applications.
-              </p>
-              <ul
-                className="skill-tags"
-                aria-label="Interface and mobile tools"
+
+        <div className="capability-grid">
+          {capabilities.map(
+            ({ icon, area, title, description, tools, proof }, index) => (
+              <article
+                className="capability-card"
+                key={area}
+                data-reveal
+                style={{ "--card-index": index }}
               >
-                <li>Flutter</li>
-                <li>Dart</li>
-                <li>React.js</li>
-                <li>TypeScript</li>
-                <li>JavaScript</li>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>Tailwind CSS</li>
-              </ul>
-              <div className="skill-proof">
-                <span>USED IN</span>
-                <p>Teleprompter app · Portfolio UI · Sky Tonight dashboard</p>
-              </div>
-            </article>
-            <article className="skill-core skill-core-secondary">
-              <header>
-                <span className="skill-core-icon" aria-hidden="true">
-                  <Icon name="database-zap" />
-                </span>
-                <div>
-                  <small>BACKEND</small>
-                  <h3>Node.js &amp; Express.js</h3>
-                </div>
-              </header>
-              <p>
-                My backend learning focuses on REST APIs, authentication and
-                persistent data for complete web product flows.
-              </p>
-              <ul className="skill-tags" aria-label="Backend and data tools">
-                <li>Node.js</li>
-                <li>Express.js</li>
-                <li>RESTful APIs</li>
-                <li>MySQL</li>
-                <li>Supabase</li>
-                <li>Gemini API</li>
-              </ul>
-              <div className="skill-proof">
-                <span>PRACTICED THROUGH</span>
-                <p>Node.js learning APIs · MoneyBoys data · Auth flows</p>
-              </div>
-            </article>
-          </div>
-          <div
-            className="skill-product-flow"
-            aria-label="Product development flow"
-          >
-            <div>
-              <Icon name="mouse-pointer-2" />
-              <span>
-                <small>01</small>User action
-              </span>
-            </div>
-            <Icon name="arrow-right" />
-            <div>
-              <Icon name="panels-top-left" />
-              <span>
-                <small>02</small>Interface state
-              </span>
-            </div>
-            <Icon name="arrow-right" />
-            <div>
-              <Icon name="braces" />
-              <span>
-                <small>03</small>Service contract
-              </span>
-            </div>
-            <Icon name="arrow-right" />
-            <div>
-              <Icon name="database" />
-              <span>
-                <small>04</small>Data &amp; response
-              </span>
-            </div>
-          </div>
-          <div className="skill-practice">
-            <p>
-              <span>HOW I WORK</span>
-              Build one usable flow, validate its behavior, then document the
-              decisions and limits.
-            </p>
-            <div>
-              <span>
-                <Icon name="git-branch" /> Git &amp; GitHub
-              </span>
-              <span>
-                <Icon name="braces" /> Postman
-              </span>
-              <span>
-                <Icon name="list-checks" /> Trello
-              </span>
-            </div>
-          </div>
+                <header>
+                  <span className="capability-icon" aria-hidden="true">
+                    <Icon name={icon} />
+                  </span>
+                  <div>
+                    <small>{area}</small>
+                    <h3>{title}</h3>
+                  </div>
+                </header>
+                <p>{description}</p>
+                <ul aria-label={`${area} tools and their purpose`}>
+                  {tools.map(([tool, purpose]) => (
+                    <li key={tool}>
+                      <strong>{tool}</strong>
+                      <span>{purpose}</span>
+                    </li>
+                  ))}
+                </ul>
+                <footer>
+                  <span>PROJECT PROOF</span>
+                  <strong>{proof}</strong>
+                </footer>
+              </article>
+            ),
+          )}
+        </div>
+
+        <div className="capability-context" data-reveal>
+          <span>CROSS-PLATFORM FOUNDATION</span>
+          <p>
+            Work with Flutter, BLoC/Cubit, Supabase, camera and realtime
+            integrations gives me a broader product perspective when designing
+            state, data flows and failure handling across applications.
+          </p>
         </div>
       </div>
     </section>

@@ -10,6 +10,19 @@
     />
     <meta name="author" content="Trần Ngọc Tiến" />
     <meta name="robots" content="index, follow" />
+    <script>
+      try {
+        const savedMotion = localStorage.getItem("tien-portfolio-motion");
+        document.documentElement.dataset.motion =
+          savedMotion === "full" || savedMotion === "reduced"
+            ? savedMotion
+            : matchMedia("(prefers-reduced-motion: reduce)").matches
+              ? "reduced"
+              : "full";
+      } catch {
+        document.documentElement.dataset.motion = "full";
+      }
+    </script>
     <meta property="og:type" content="website" />
     <meta
       property="og:title"

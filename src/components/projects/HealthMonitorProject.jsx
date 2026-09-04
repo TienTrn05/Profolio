@@ -1,9 +1,7 @@
-import { useState } from "react";
 import Icon from "../ui/Icon";
+import ProjectTags from "../ui/ProjectTags";
 
-export default function HealthMonitorProject({ onOpenCaseStudy }) {
-  const [activeView, setActiveView] = useState("product");
-
+export default function HealthMonitorProject() {
   return (
     <article
       className="project-panel"
@@ -15,72 +13,38 @@ export default function HealthMonitorProject({ onOpenCaseStudy }) {
           <p className="project-kicker project-kicker-red">
             IoT Health Monitor
           </p>
-          <span className="project-status">
-            <span />
-            <span>Public Repository</span>
-          </span>
+          <ProjectTags items={["Course Project", "IoT Prototype"]} />
         </div>
-        <div
-          className="view-switch"
-          role="tablist"
-          aria-label="IoT Health Monitor project view"
-        >
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeView === "product"}
-            onClick={() => setActiveView("product")}
-          >
-            Product View
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeView === "technical"}
-            onClick={() => setActiveView("technical")}
-          >
-            Technical View
-          </button>
-        </div>
-        <div
-          className={`project-view${activeView === "product" ? " is-visible" : ""}`}
-          role="tabpanel"
-          hidden={activeView !== "product"}
-        >
-          <h3>Monitor vital signs and respond to falls in real time.</h3>
+        <div className="project-view is-visible">
+          <h3>Connecting sensor data to a realtime health dashboard.</h3>
           <p>
-            An IoT health system that collects sensor readings from an ESP32 and
-            delivers live health data, fall alerts and historical trends to a
-            Flutter dashboard.
+            An academic prototype exploring how ESP32 sensor readings can move
+            through MQTT into a Flutter dashboard for live vitals, fall alerts
+            and history.
           </p>
-          <ul className="feature-chips">
-            <li>Live health readings</li>
-            <li>Fall detection alerts</li>
-            <li>Health history</li>
-          </ul>
         </div>
-        <div
-          className={`project-view${activeView === "technical" ? " is-visible" : ""}`}
-          role="tabpanel"
-          hidden={activeView !== "technical"}
-        >
-          <h3>Sensor telemetry connected to a realtime mobile dashboard.</h3>
-          <p>
-            ESP32 firmware owns sensor sampling and MQTT messaging, while the
-            Flutter app models incoming health and fall packets, manages live
-            state and presents home, alert and history experiences.
-          </p>
-          <dl className="technical-meta">
-            <div>
-              <dt>Contribution</dt>
-              <dd>Firmware · sensor logic · realtime Flutter UI</dd>
-            </div>
-            <div>
-              <dt>Stack</dt>
-              <dd>ESP32 · Arduino · MQTT · Flutter · Provider</dd>
-            </div>
-          </dl>
-        </div>
+        <dl className="technical-meta project-evidence">
+          <div>
+            <dt>Contribution</dt>
+            <dd>Firmware · sensor logic · realtime Flutter integration</dd>
+          </div>
+          <div>
+            <dt>Engineering focus</dt>
+            <dd>
+              Validate signal quality and score fall patterns before display
+            </dd>
+          </div>
+          <div>
+            <dt>Tool roles</dt>
+            <dd>
+              ESP32 for sensing · MQTT for telemetry · Flutter for response
+            </dd>
+          </div>
+          <div>
+            <dt>Outcome</dt>
+            <dd>Academic prototype · public firmware and app source</dd>
+          </div>
+        </dl>
         <div
           className="project-system-map"
           aria-label="IoT Health Monitor engineering layers"
@@ -116,14 +80,6 @@ export default function HealthMonitorProject({ onOpenCaseStudy }) {
             <span>View GitHub</span>
             <Icon name="arrow-up-right" />
           </a>
-          <button
-            className="text-action"
-            type="button"
-            onClick={onOpenCaseStudy}
-          >
-            <span>Read Case Study</span>
-            <Icon name="plus" />
-          </button>
         </div>
       </div>
       <div className="project-media project-media-repository project-media-health">
@@ -131,8 +87,8 @@ export default function HealthMonitorProject({ onOpenCaseStudy }) {
           <div className="repository-visual-icon">
             <Icon name="radio-tower" />
           </div>
-          <small>CONNECTED HEALTH SYSTEM</small>
-          <h4>Health telemetry, connected end to end.</h4>
+          <small>CONNECTED SYSTEM PROTOTYPE</small>
+          <h4>From sensor readings to a live interface.</h4>
           <div className="repository-path" aria-hidden="true">
             <span>ESP32</span>
             <Icon name="arrow-right" />
@@ -141,13 +97,13 @@ export default function HealthMonitorProject({ onOpenCaseStudy }) {
             <span>FLUTTER</span>
           </div>
           <p>
-            One repository brings the embedded firmware and mobile monitoring
-            experience together.
+            Embedded firmware, realtime transport and a monitoring interface in
+            one connected flow.
           </p>
         </div>
         <div className="repository-evidence-label">
           <Icon name="github" />
-          <span>Architecture verified from public repository</span>
+          <span>Academic project · public repository</span>
         </div>
       </div>
     </article>

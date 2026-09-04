@@ -3,18 +3,18 @@ import Icon from "../ui/Icon";
 const capabilities = [
   {
     icon: "panels-top-left",
-    label: "Frontend",
-    tools: "React.js · TypeScript · JavaScript",
+    label: "Web frontend",
+    tools: "React · TypeScript · Tailwind CSS",
   },
   {
     icon: "server",
     label: "Backend",
-    tools: "Node.js · Express.js · MySQL",
+    tools: "Node.js · Express · REST APIs",
   },
   {
-    icon: "smartphone",
-    label: "Current projects",
-    tools: "Flutter · Dart",
+    icon: "database-zap",
+    label: "Data & delivery",
+    tools: "MySQL · PostgreSQL · Git",
   },
 ];
 
@@ -34,9 +34,9 @@ export default function Hero() {
           </h1>
 
           <p className="hero-description">
-            React.js, TypeScript and JavaScript on the frontend. Node.js,
-            Express.js, RESTful APIs and MySQL on the backend. Current project
-            experience built with Flutter and Dart.
+            I build end-to-end web applications with React, TypeScript, Node.js,
+            Express and SQL, supported by hands-on experience delivering
+            stateful interfaces, data integrations and realtime product flows.
           </p>
 
           <div className="hero-capabilities" aria-label="Core capabilities">

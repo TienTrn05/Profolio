@@ -25,6 +25,7 @@
 
 .case-close {
   position: absolute;
+  z-index: 5;
   top: 1.25rem;
   right: 1.25rem;
   display: grid;
@@ -157,6 +158,427 @@
   font-size: clamp(1.25rem, 4vw, 3rem);
   font-weight: 700;
   letter-spacing: 0.08em;
+}
+
+/* MoneyBoys case study */
+
+.money-case-study {
+  margin: calc(clamp(1.5rem, 5vw, 4rem) * -1);
+}
+
+.money-case-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(22rem, 0.95fr);
+  min-height: 34rem;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 18% 16%,
+      rgba(153, 79, 245, 0.26),
+      transparent 32%
+    ),
+    #070d18;
+  color: #fff;
+}
+
+.money-case-copy {
+  align-self: center;
+  padding: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.money-case-eyebrow {
+  margin: 2rem 0 0;
+  color: #d6baff;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.money-case-copy h2 {
+  max-width: 12ch;
+  margin-top: 0.75rem;
+  color: #fff;
+  font-size: clamp(2.5rem, 4.5vw, 4.2rem);
+  line-height: 1.08;
+}
+
+.money-case-intro {
+  max-width: 38rem;
+  margin: 1.35rem 0 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.04rem;
+  line-height: 1.7;
+}
+
+.money-case-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding-top: 1.5rem;
+  margin: 2rem 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.money-case-facts > div {
+  min-width: 0;
+}
+
+.money-case-facts > div + div {
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  padding-left: 1.1rem;
+}
+
+.money-case-facts dt {
+  color: #be87ff;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.money-case-facts dd {
+  margin: 0.4rem 0 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.money-case-visual {
+  position: relative;
+  min-height: 34rem;
+  overflow: hidden;
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  isolation: isolate;
+}
+
+.money-case-visual::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(7, 13, 24, 0.56), transparent 45%),
+    linear-gradient(180deg, transparent 58%, rgba(7, 13, 24, 0.82));
+  content: "";
+  pointer-events: none;
+}
+
+.money-case-logo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.72;
+}
+
+.money-case-screen {
+  position: absolute;
+  z-index: 2;
+  top: 2rem;
+  right: 2.25rem;
+  width: min(44%, 15rem);
+  max-width: none;
+  border: 0.55rem solid #111925;
+  border-radius: 2.1rem;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.42);
+  transform: rotate(3deg);
+}
+
+.money-case-visual-label {
+  position: absolute;
+  z-index: 3;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.34);
+  padding-top: 0.85rem;
+  color: #fff;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.money-case-visual-label svg {
+  width: 1rem;
+  color: var(--yellow);
+}
+
+.money-case-content {
+  display: grid;
+  gap: 1.25rem;
+  padding: clamp(2rem, 5vw, 4rem);
+  background:
+    linear-gradient(var(--border-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-soft) 1px, transparent 1px),
+    var(--surface-soft);
+  background-size: 3rem 3rem;
+}
+
+.money-case-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.money-case-highlights article {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-top: 0.3rem solid var(--purple);
+  padding: 1.5rem;
+  background: var(--surface);
+}
+
+.money-case-highlights article:nth-child(2) {
+  border-top-color: var(--sky);
+}
+
+.money-case-highlights article:nth-child(3) {
+  border-top-color: #20be78;
+}
+
+.money-highlight-icon {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.3rem;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--purple) 36%, var(--border));
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--purple) 8%, var(--surface));
+  color: var(--purple);
+}
+
+.money-highlight-icon svg {
+  width: 1.35rem;
+}
+
+.money-case-highlights small,
+.money-section-heading span,
+.money-case-takeaway small,
+.money-tool-label {
+  color: var(--purple);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.money-case-highlights h3 {
+  margin: 0.55rem 0 0;
+  font-size: 1.3rem;
+  line-height: 1.35;
+}
+
+.money-case-highlights p {
+  margin: 0.65rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.money-system {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background:
+    radial-gradient(
+      circle at 92% 15%,
+      rgba(153, 79, 245, 0.18),
+      transparent 28%
+    ),
+    #09131f;
+  color: #fff;
+}
+
+.money-section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.money-section-heading h3 {
+  margin: 0.55rem 0 0;
+  font-size: clamp(1.45rem, 2.5vw, 2rem);
+  line-height: 1.3;
+}
+
+.money-section-heading > p {
+  max-width: 18rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.85rem;
+  text-align: right;
+}
+
+.money-system-flow {
+  display: flex;
+  align-items: stretch;
+  gap: 0.65rem;
+  margin-top: 1.75rem;
+}
+
+.money-flow-step {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.money-flow-step > span {
+  display: grid;
+  min-width: 0;
+  min-height: 6rem;
+  flex: 1;
+  align-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.money-flow-step b,
+.money-flow-step small {
+  display: block;
+}
+
+.money-flow-step b {
+  font-size: 0.94rem;
+}
+
+.money-flow-step small {
+  margin-top: 0.35rem;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.68rem;
+}
+
+.money-flow-step > svg {
+  width: 1rem;
+  flex: 0 0 auto;
+  color: var(--purple);
+}
+
+.money-ai-note {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 1rem 0 0;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 0.78rem;
+}
+
+.money-ai-note svg {
+  width: 1rem;
+  flex: 0 0 auto;
+  color: var(--yellow);
+}
+
+.money-case-details {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
+  gap: 1.25rem;
+}
+
+.money-contribution,
+.money-tool-roles {
+  border: 1px solid var(--border);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background: var(--surface);
+}
+
+.money-contribution ul {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0;
+  margin: 1.35rem 0 0;
+  list-style: none;
+}
+
+.money-contribution li {
+  display: grid;
+  grid-template-columns: 2.4rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.8rem;
+  border-top: 1px solid var(--border-soft);
+  padding-top: 0.75rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.money-contribution li > svg {
+  width: 1.2rem;
+  color: var(--purple);
+}
+
+.money-tool-roles {
+  background: color-mix(in srgb, var(--purple) 7%, var(--surface));
+}
+
+.money-tool-roles > div {
+  display: grid;
+  grid-template-columns: 2.6rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 0;
+}
+
+.money-tool-roles > div + div {
+  border-top: 1px solid var(--border);
+}
+
+.money-tool-roles svg {
+  width: 1.25rem;
+  color: var(--purple);
+}
+
+.money-tool-roles p,
+.money-tool-roles strong,
+.money-tool-roles small {
+  display: block;
+  margin: 0;
+}
+
+.money-tool-roles strong {
+  font-size: 0.9rem;
+}
+
+.money-tool-roles small {
+  margin-top: 0.18rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.money-case-takeaway {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  border-left: 0.35rem solid var(--yellow);
+  padding: 1.3rem 1.5rem;
+  background: var(--surface);
+}
+
+.money-case-takeaway > svg {
+  width: 1.5rem;
+  color: var(--purple);
+}
+
+.money-case-takeaway p {
+  margin: 0.35rem 0 0;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.money-case-cta {
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* Health-monitor case study */
@@ -442,6 +864,62 @@
 }
 
 @media (max-width: 767px) {
+  .money-case-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .money-case-copy {
+    padding-top: 5rem;
+  }
+
+  .money-case-visual {
+    min-height: 28rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    border-left: 0;
+  }
+
+  .money-case-facts,
+  .money-case-highlights,
+  .money-case-details {
+    grid-template-columns: 1fr;
+  }
+
+  .money-case-facts {
+    gap: 1rem;
+  }
+
+  .money-case-facts > div + div {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .money-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .money-section-heading > p {
+    text-align: left;
+  }
+
+  .money-system-flow {
+    flex-direction: column;
+  }
+
+  .money-flow-step {
+    flex-direction: column;
+  }
+
+  .money-flow-step > span {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .money-flow-step > svg {
+    transform: rotate(90deg);
+  }
+
   .case-summary,
   .case-decision-list,
   .case-build-grid,

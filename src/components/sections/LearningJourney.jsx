@@ -1,73 +1,101 @@
+import { useRef } from "react";
 import Icon from "../ui/Icon";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import BackendFoundationsCard from "../learning/BackendFoundationsCard";
-import FlutterTestingCard from "../learning/FlutterTestingCard";
-import EndToEndDeliveryCard from "../learning/EndToEndDeliveryCard";
-import RelationalDataCard from "../learning/RelationalDataCard";
-import ReliableDeliveryCard from "../learning/ReliableDeliveryCard";
 
-const cards = [
-  BackendFoundationsCard,
-  FlutterTestingCard,
-  EndToEndDeliveryCard,
-  RelationalDataCard,
-  ReliableDeliveryCard,
+const learningTopics = [
+  {
+    icon: "cpu",
+    area: "Performance",
+    title: "Runtime Profiling",
+    description: "Trace CPU and memory to locate runtime bottlenecks.",
+    visual: ["CPU", "HEAP", "TRACE"],
+    tags: ["Node.js", "V8", "diagnostics"],
+    href: "https://nodejs.org/api/cli.html#--cpu-prof",
+    source: "Node.js Docs",
+  },
+  {
+    icon: "flask-conical",
+    area: "Performance",
+    title: "Load Testing",
+    description: "Simulate traffic and track latency, throughput and failures.",
+    visual: ["VUs", "RPS", "P95"],
+    tags: ["k6", "thresholds", "scenarios"],
+    href: "https://grafana.com/docs/k6/latest/get-started/write-your-first-test/",
+    source: "Grafana k6",
+  },
+  {
+    icon: "database",
+    area: "Data",
+    title: "Query Plans",
+    description: "Read execution plans to improve scans, joins and indexes.",
+    visual: ["SCAN", "INDEX", "COST"],
+    tags: ["PostgreSQL", "EXPLAIN", "indexes"],
+    href: "https://www.postgresql.org/docs/current/using-explain.html",
+    source: "PostgreSQL Docs",
+  },
+  {
+    icon: "database-zap",
+    area: "Performance",
+    title: "Caching Strategies",
+    description: "Explore cache-aside flows, expiration and invalidation.",
+    visual: ["HIT", "MISS", "TTL"],
+    tags: ["Redis", "cache-aside", "invalidation"],
+    href: "https://redis.io/tutorials/howtos/solutions/microservices/caching/",
+    source: "Redis Learn",
+  },
+  {
+    icon: "telescope",
+    area: "Reliability",
+    title: "Observability",
+    description:
+      "Connect traces, metrics and logs across application boundaries.",
+    visual: ["TRACE", "METRIC", "LOG"],
+    tags: ["OpenTelemetry", "signals", "context"],
+    href: "https://opentelemetry.io/docs/languages/js/getting-started/",
+    source: "OpenTelemetry",
+  },
+  {
+    icon: "workflow",
+    area: "Architecture",
+    title: "Background Jobs",
+    description: "Move slow or retryable work into queues and workers.",
+    visual: ["QUEUE", "WORKER", "RETRY"],
+    tags: ["BullMQ", "Redis", "workers"],
+    href: "https://docs.bullmq.io/guide/architecture",
+    source: "BullMQ Docs",
+  },
+  {
+    icon: "boxes",
+    area: "Delivery",
+    title: "Containers",
+    description: "Package services for consistent development and delivery.",
+    visual: ["IMAGE", "BUILD", "SHIP"],
+    tags: ["Docker", "Node.js", "CI/CD"],
+    href: "https://docs.docker.com/guides/nodejs/",
+    source: "Docker Docs",
+  },
+  {
+    icon: "waypoints",
+    area: "Architecture",
+    title: "Service Boundaries",
+    description: "Study domain boundaries, independent delivery and isolation.",
+    visual: ["DOMAIN", "SCALE", "ISOLATE"],
+    tags: ["microservices", "trade-offs", "resilience"],
+    href: "https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/microservices",
+    source: "Microsoft Learn",
+  },
 ];
-
-const topics = [
-  "backend foundations",
-  "Flutter testing",
-  "end-to-end delivery",
-  "relational data",
-  "reliable delivery",
-];
-
-function getVisibleCount() {
-  if (innerWidth <= 767) return 1;
-  if (innerWidth <= 1023) return 2;
-  return 3;
-}
 
 export default function LearningJourney() {
-  const trackRef = useRef(null);
-  const dragStart = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(getVisibleCount);
-  const maxIndex = Math.max(cards.length - visibleCount, 0);
+  const railRef = useRef(null);
 
-  const show = (requestedIndex) => {
-    setActiveIndex(
-      requestedIndex > maxIndex
-        ? 0
-        : requestedIndex < 0
-          ? maxIndex
-          : requestedIndex,
-    );
+  const scrollRail = (direction) => {
+    const rail = railRef.current;
+    if (!rail) return;
+    rail.scrollBy({
+      left: direction * Math.min(rail.clientWidth * 0.82, 440),
+      behavior: "smooth",
+    });
   };
-
-  useEffect(() => {
-    const update = () => {
-      const nextVisibleCount = getVisibleCount();
-      setVisibleCount(nextVisibleCount);
-      setActiveIndex((index) =>
-        Math.min(index, Math.max(cards.length - nextVisibleCount, 0)),
-      );
-    };
-    addEventListener("resize", update);
-    return () => removeEventListener("resize", update);
-  }, []);
-
-  useLayoutEffect(() => {
-    const track = trackRef.current;
-    const slide = track?.querySelectorAll("[data-learning-slide]")[activeIndex];
-    if (track)
-      track.style.transform = `translate3d(-${slide?.offsetLeft ?? 0}px, 0, 0)`;
-  }, [activeIndex, visibleCount]);
-
-  const start = String(activeIndex + 1).padStart(2, "0");
-  const end = String(
-    Math.min(activeIndex + visibleCount, cards.length),
-  ).padStart(2, "0");
 
   return (
     <section
@@ -76,106 +104,94 @@ export default function LearningJourney() {
       aria-labelledby="building-title"
     >
       <div className="container">
-        <header className="section-heading section-heading-center">
+        <header className="section-heading section-heading-center" data-reveal>
           <div className="section-badge">
             <span aria-hidden="true">✦</span>
-            <span>Now</span>
+            <span>Learning Path</span>
           </div>
-          <h2 id="building-title">What I&apos;m learning now</h2>
+          <h2 id="building-title">Currently Learning</h2>
           <p>
-            The skills I&apos;m actively practicing to connect mobile
-            interfaces, backend systems and reliable delivery.
+            Topics I’m exploring to build faster, more reliable and more
+            scalable systems.
           </p>
         </header>
-        <div
-          className="learning-slider"
-          role="region"
-          aria-roledescription="carousel"
-          aria-label="Current learning topics"
-          tabIndex={0}
-          onKeyDown={(event) => {
-            if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key))
-              return;
-            event.preventDefault();
-            if (event.key === "ArrowLeft") show(activeIndex - 1);
-            if (event.key === "ArrowRight") show(activeIndex + 1);
-            if (event.key === "Home") show(0);
-            if (event.key === "End") show(maxIndex);
-          }}
-          onPointerDown={(event) => {
-            dragStart.current = event.clientX;
-          }}
-          onPointerUp={(event) => {
-            if (dragStart.current === null) return;
-            const distance = event.clientX - dragStart.current;
-            dragStart.current = null;
-            if (Math.abs(distance) >= 45)
-              show(activeIndex + (distance < 0 ? 1 : -1));
-          }}
-        >
-          <div className="learning-slider-topline">
+
+        <div className="learning-browser" data-reveal>
+          <div className="learning-browser-toolbar">
             <p>
               <span className="learning-pulse" aria-hidden="true" />
-              <span>LEARNING LOG</span>
-              <strong>
-                {start}–{end} / 05
-              </strong>
+              <strong>{String(learningTopics.length).padStart(2, "0")}</strong>
+              <span>ACTIVE TOPICS</span>
             </p>
-            <div className="learning-controls" aria-label="Slider controls">
+            <div
+              className="learning-controls"
+              aria-label="Learning list controls"
+            >
               <button
                 type="button"
-                onClick={() => show(activeIndex - 1)}
-                aria-label="Show previous learning topic"
+                onClick={() => scrollRail(-1)}
+                aria-label="Scroll learning topics left"
               >
                 <Icon name="arrow-left" />
               </button>
               <button
                 type="button"
-                onClick={() => show(activeIndex + 1)}
-                aria-label="Show next learning topic"
+                onClick={() => scrollRail(1)}
+                aria-label="Scroll learning topics right"
               >
                 <Icon name="arrow-right" />
               </button>
             </div>
           </div>
-          <div className="learning-viewport">
-            <div ref={trackRef} className="building-grid">
-              {cards.map((Card, index) => (
-                <Card
-                  key={topics[index]}
-                  hidden={
-                    index < activeIndex || index >= activeIndex + visibleCount
-                  }
-                />
-              ))}
-            </div>
-          </div>
-          <div className="learning-slider-footer">
-            <div className="learning-dots" aria-label="Choose a learning topic">
-              {topics.map((topic, index) => (
-                <button
-                  key={topic}
-                  type="button"
-                  className={index === activeIndex ? "is-active" : undefined}
-                  hidden={index > maxIndex}
-                  aria-label={`Show ${topic}`}
-                  aria-current={index === activeIndex ? "true" : undefined}
-                  onClick={() => show(index)}
-                />
-              ))}
-            </div>
-            <p className="learning-hint">Drag or use arrow keys to explore</p>
-            <p className="sr-only" aria-live="polite">
-              Showing {topics[activeIndex]}
-            </p>
+
+          <div
+            className="learning-rail"
+            ref={railRef}
+            tabIndex={0}
+            aria-label="Current learning topics"
+          >
+            {learningTopics.map(
+              (
+                { icon, area, title, description, visual, tags, href, source },
+                index,
+              ) => (
+                <article
+                  className="learning-card"
+                  key={title}
+                  style={{ "--card-index": index }}
+                >
+                  <div
+                    className={`learning-card-visual learning-card-visual-${(index % 4) + 1}`}
+                    aria-hidden="true"
+                  >
+                    <span className="learning-card-icon">
+                      <Icon name={icon} />
+                    </span>
+                    <div>
+                      {visual.map((item) => (
+                        <span key={item}>{item}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="learning-card-body">
+                    <small>{area}</small>
+                    <h3>{title}</h3>
+                    <p>{description}</p>
+                    <ul aria-label={`${title} topics`}>
+                      {tags.map((tag) => (
+                        <li key={tag}>{tag}</li>
+                      ))}
+                    </ul>
+                    <a href={href} target="_blank" rel="noopener noreferrer">
+                      <span>{source}</span>
+                      <Icon name="arrow-up-right" />
+                    </a>
+                  </div>
+                </article>
+              ),
+            )}
           </div>
         </div>
-        <p className="system-status">
-          <span>LEARNING: IN PROGRESS</span>
-          <span>FOCUS: FULL-STACK FOUNDATIONS</span>
-          <span>TOPICS: 05</span>
-          <span>UPDATED: NOW</span>
-        </p>
       </div>
     </section>
   );

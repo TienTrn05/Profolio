@@ -18,3 +18,12 @@ html:not(.no-js) [data-reveal].is-revealed {
   filter: blur(0);
   transform: translate3d(0, 0, 0);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion="full"]):not(.no-js) [data-reveal] {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+}

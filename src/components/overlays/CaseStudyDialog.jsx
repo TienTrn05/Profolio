@@ -145,11 +145,7 @@ function HealthMonitorCaseStudy() {
             </div>
             <Icon name="arrow-right" />
             <div>
-              MQTT <small>Telemetry</small>
-            </div>
-            <Icon name="arrow-right" />
-            <div>
-              Realtime API <small>Socket + history</small>
+              MQTT broker <small>Realtime transport</small>
             </div>
             <Icon name="arrow-right" />
             <div>
@@ -173,10 +169,10 @@ function HealthMonitorCaseStudy() {
             <span className="case-section-index">06 / CURRENT SCOPE</span>
             <h3>What I would validate next.</h3>
             <p>
-              The repository does not publish clinical validation, fall accuracy
-              benchmarks or the server bridge source. Before calling this
-              production-ready, I would document hardware calibration, measure
-              false positives and add end-to-end reliability tests.
+              The repository does not publish clinical validation or fall
+              accuracy benchmarks. Before calling this production-ready, I would
+              document hardware calibration, measure false positives and add
+              end-to-end reliability tests.
             </p>
           </div>
         </section>
@@ -197,6 +193,225 @@ function HealthMonitorCaseStudy() {
           <a
             className="button button-dark"
             href="https://github.com/TienTrn05/Heart-Rate-Monitor-and-Fall-Detection-Device"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>View Repository</span>
+            <Icon name="arrow-up-right" />
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MoneyBoysCaseStudy() {
+  const highlights = [
+    {
+      icon: "boxes",
+      label: "01 / Problem",
+      title: "Fragmented money workflows",
+      detail:
+        "Transactions, budgets and insights needed to stay connected across several screens.",
+    },
+    {
+      icon: "workflow",
+      label: "02 / Decision",
+      title: "Separate state from data",
+      detail:
+        "Cubit handles interface state while reusable services own finance operations.",
+    },
+    {
+      icon: "circle-check",
+      label: "03 / Outcome",
+      title: "One consistent flow",
+      detail:
+        "A working team prototype for tracking expenses, budgets and spending patterns.",
+    },
+  ];
+
+  const flow = [
+    { name: "Flutter", purpose: "Interface" },
+    { name: "Cubit", purpose: "Feature state" },
+    { name: "Services", purpose: "Finance logic" },
+    { name: "Supabase", purpose: "PostgreSQL" },
+  ];
+
+  return (
+    <div className="money-case-study">
+      <header className="money-case-hero">
+        <div className="money-case-copy">
+          <div className="section-badge">
+            <span aria-hidden="true">✦</span>
+            <span>MoneyBoys Case Study</span>
+          </div>
+          <p className="money-case-eyebrow">University team project</p>
+          <h2 id="case-dialog-title">
+            One shared data layer for everyday finance.
+          </h2>
+          <p className="money-case-intro">
+            MoneyBoys connects transactions, budgets and spending insights in
+            one Flutter experience.
+          </p>
+          <dl className="money-case-facts" aria-label="Project summary">
+            <div>
+              <dt>My role</dt>
+              <dd>Data models &amp; CRUD</dd>
+            </div>
+            <div>
+              <dt>Core stack</dt>
+              <dd>Flutter · Supabase</dd>
+            </div>
+            <div>
+              <dt>Result</dt>
+              <dd>Working prototype</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div className="money-case-visual" aria-label="MoneyBoys app preview">
+          <img
+            className="money-case-logo"
+            src="assets/images/projects/moneyboys-logo.jpg"
+            width={1024}
+            height={1024}
+            alt=""
+          />
+          <img
+            className="money-case-screen"
+            src="assets/images/projects/moneyboys-splash.png"
+            width={600}
+            height={1067}
+            alt="MoneyBoys sign-in screen from the project build"
+          />
+          <div className="money-case-visual-label">
+            <Icon name="play" />
+            <span>Repository build</span>
+          </div>
+        </div>
+      </header>
+
+      <div className="money-case-content">
+        <section
+          className="money-case-highlights"
+          aria-label="Case study summary"
+        >
+          {highlights.map(({ icon, label, title, detail }) => (
+            <article key={label}>
+              <span className="money-highlight-icon">
+                <Icon name={icon} />
+              </span>
+              <small>{label}</small>
+              <h3>{title}</h3>
+              <p>{detail}</p>
+            </article>
+          ))}
+        </section>
+
+        <section className="money-system">
+          <div className="money-section-heading">
+            <div>
+              <span>04 / System flow</span>
+              <h3>From screen interaction to shared data.</h3>
+            </div>
+            <p>Each layer has one clear responsibility.</p>
+          </div>
+          <div
+            className="money-system-flow"
+            aria-label="MoneyBoys architecture"
+          >
+            {flow.map(({ name, purpose }, index) => (
+              <div className="money-flow-step" key={name}>
+                <span>
+                  <b>{name}</b>
+                  <small>{purpose}</small>
+                </span>
+                {index < flow.length - 1 && <Icon name="arrow-right" />}
+              </div>
+            ))}
+          </div>
+          <p className="money-ai-note">
+            <Icon name="sparkles" />
+            <span>
+              Gemini supports optional guidance; the core finance flow remains
+              independent.
+            </span>
+          </p>
+        </section>
+
+        <section className="money-case-details">
+          <article className="money-contribution">
+            <div className="money-section-heading">
+              <div>
+                <span>05 / My contribution</span>
+                <h3>Database work connected to product behavior.</h3>
+              </div>
+            </div>
+            <ul>
+              <li>
+                <Icon name="database-zap" />
+                <span>
+                  Model finance data shared by transactions and budgets.
+                </span>
+              </li>
+              <li>
+                <Icon name="server-cog" />
+                <span>
+                  Build reusable CRUD operations behind feature screens.
+                </span>
+              </li>
+              <li>
+                <Icon name="layout-dashboard" />
+                <span>Feed stored data into spending views and charts.</span>
+              </li>
+            </ul>
+          </article>
+
+          <aside className="money-tool-roles">
+            <span className="money-tool-label">Tools with a purpose</span>
+            <div>
+              <Icon name="database" />
+              <p>
+                <strong>Supabase</strong>
+                <small>Shared PostgreSQL data</small>
+              </p>
+            </div>
+            <div>
+              <Icon name="workflow" />
+              <p>
+                <strong>BLoC / Cubit</strong>
+                <small>Predictable feature state</small>
+              </p>
+            </div>
+            <div>
+              <Icon name="table-properties" />
+              <p>
+                <strong>FL Chart</strong>
+                <small>Visual spending insights</small>
+              </p>
+            </div>
+          </aside>
+        </section>
+
+        <div className="money-case-takeaway">
+          <Icon name="lightbulb" />
+          <div>
+            <small>Engineering takeaway</small>
+            <p>
+              Screens describe state; services own the finance operations that
+              multiple features need.
+            </p>
+          </div>
+        </div>
+
+        <div className="case-cta money-case-cta">
+          <div>
+            <small>INSPECT THE IMPLEMENTATION</small>
+            <strong>The team project source is publicly available.</strong>
+          </div>
+          <a
+            className="button button-dark"
+            href="https://github.com/TienTrn05/ProjectFinalMobile-"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -244,99 +459,7 @@ export default function CaseStudyDialog({ open, caseStudy, onClose }) {
         {caseStudy === "health-monitor" ? (
           <HealthMonitorCaseStudy />
         ) : (
-          <>
-            <div className="section-badge">
-              <span aria-hidden="true">✦</span>
-              <span>MoneyBoys Case Study</span>
-            </div>
-            <h2 id="case-dialog-title">
-              Finance tracking backed by a shared Supabase data layer.
-            </h2>
-            <div className="case-grid">
-              <article>
-                <span>01</span>
-                <h3>Problem</h3>
-                <p>
-                  Transactions, budgets, charts and advice often live in
-                  separate tools.
-                </p>
-              </article>
-              <article>
-                <span>02</span>
-                <h3>Context</h3>
-                <p>
-                  Bring expense tracking, budgets, charts and optional AI
-                  guidance into one Flutter application.
-                </p>
-              </article>
-              <article>
-                <span>03</span>
-                <h3>Role</h3>
-                <p>
-                  Implement authentication, finance models and Supabase CRUD
-                  services for spending, budgets, categories and user data.
-                </p>
-              </article>
-              <article>
-                <span>05</span>
-                <h3>Challenge</h3>
-                <p>
-                  Keep account, transaction and budget data consistent across
-                  several feature screens.
-                </p>
-              </article>
-              <article>
-                <span>06</span>
-                <h3>Solution</h3>
-                <p>
-                  Separate Cubit-driven UI state from dedicated authentication,
-                  reporting and finance data services.
-                </p>
-              </article>
-              <article>
-                <span>07</span>
-                <h3>Result</h3>
-                <p>
-                  A working team prototype combining expense and budget CRUD,
-                  spending charts and Gemini-supported guidance.
-                </p>
-              </article>
-            </div>
-            <div className="architecture-wrap">
-              <span className="architecture-index">04</span>
-              <h3>Architecture</h3>
-              <div className="architecture" aria-label="MoneyBoys architecture">
-                <div>
-                  Flutter <small>Interface</small>
-                </div>
-                <Icon name="arrow-right" />
-                <div>
-                  Cubit <small>State</small>
-                </div>
-                <Icon name="arrow-right" />
-                <div>
-                  Services <small>Finance CRUD</small>
-                </div>
-                <Icon name="arrow-right" />
-                <div>
-                  Supabase <small>PostgreSQL</small>
-                </div>
-                <Icon name="arrow-right" />
-                <div>
-                  Gemini <small>Optional Guidance</small>
-                </div>
-              </div>
-            </div>
-            <blockquote>
-              <span>
-                08 / <span>Lessons</span>
-              </span>
-              <p>
-                “Good architecture is not about adding complexity. It is about
-                making future changes easier.”
-              </p>
-            </blockquote>
-          </>
+          <MoneyBoysCaseStudy />
         )}
       </div>
     </dialog>

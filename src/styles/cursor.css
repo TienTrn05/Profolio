@@ -1,0 +1,35 @@
+/* A familiar cursor with a small brand-color treatment. */
+
+@media (pointer: fine) {
+  html,
+  body {
+    cursor:
+      url("/assets/icons/cursor-purple.svg") 4 3,
+      auto;
+  }
+
+  a,
+  button,
+  summary,
+  label[for],
+  select,
+  [role="button"],
+  input[type="button"],
+  input[type="checkbox"],
+  input[type="radio"],
+  input[type="range"],
+  input[type="reset"],
+  input[type="submit"] {
+    cursor:
+      url("/assets/icons/cursor-purple-pointer.svg") 10 4,
+      pointer;
+  }
+
+  input:not([type="button"]):not([type="checkbox"]):not([type="radio"]):not(
+      [type="range"]
+    ):not([type="reset"]):not([type="submit"]),
+  textarea,
+  [contenteditable="true"] {
+    cursor: text;
+  }
+}
