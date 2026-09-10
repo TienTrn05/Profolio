@@ -1,12 +1,18 @@
 import Icon from "../ui/Icon";
 import { useEffect, useRef, useState } from "react";
+import { portfolioContact, portfolioLinks } from "../../config/portfolio";
 
-const CONTACT_EMAIL = "ngoctien20022005@gmail.com";
+const CONTACT_EMAIL = portfolioContact.email;
+const CONTACT_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
 
 export default function SiteFooter() {
   const [copyLabel, setCopyLabel] = useState("Copy Email");
+  const [senderName, setSenderName] = useState("");
+  const [senderEmail, setSenderEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const [formStatus, setFormStatus] = useState({ state: "idle", message: "" });
+  const [toast, setToast] = useState(null);
   const contactDialogRef = useRef(null);
 
   useEffect(() => {
@@ -15,16 +21,28 @@ export default function SiteFooter() {
     return () => clearTimeout(timer);
   }, [copyLabel]);
 
+  useEffect(() => {
+    if (!toast) return undefined;
+    const timer = setTimeout(() => setToast(null), 4500);
+    return () => clearTimeout(timer);
+  }, [toast]);
+
   const copyEmail = async () => {
     try {
       await navigator.clipboard.writeText(CONTACT_EMAIL);
       setCopyLabel("Email copied");
+      setToast({ type: "success", message: "Email address copied." });
     } catch {
       setCopyLabel("Could not copy email");
+      setToast({
+        type: "error",
+        message: "Could not copy the email address. Please copy it manually.",
+      });
     }
   };
 
   const openContactDialog = () => {
+    setFormStatus({ state: "idle", message: "" });
     contactDialogRef.current?.showModal();
     document.body.classList.add("dialog-open");
   };
@@ -34,11 +52,60 @@ export default function SiteFooter() {
     document.body.classList.remove("dialog-open");
   };
 
-  const sendEmail = (event) => {
+  const sendEmail = async (event) => {
     event.preventDefault();
-    const emailUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject.trim())}&body=${encodeURIComponent(message.trim())}`;
-    closeContactDialog();
-    window.location.href = emailUrl;
+    setFormStatus({ state: "sending", message: "Sending your message…" });
+
+    try {
+      const response = await fetch(CONTACT_ENDPOINT, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: senderName.trim(),
+          email: senderEmail.trim(),
+          subject: subject.trim(),
+          message: message.trim(),
+          _subject: `Portfolio message from ${senderName.trim()}: ${subject.trim()}`,
+          _template: "table",
+          _honey: "",
+        }),
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (
+        !response.ok ||
+        result.success === false ||
+        result.success === "false"
+      ) {
+        throw new Error(result.message || "The message could not be sent.");
+      }
+
+      setSenderName("");
+      setSenderEmail("");
+      setSubject("");
+      setMessage("");
+      setFormStatus({ state: "idle", message: "" });
+      closeContactDialog();
+      setToast({
+        type: "success",
+        message: "Message sent. Thank you — I’ll get back to you soon.",
+      });
+    } catch (error) {
+      setFormStatus({
+        state: "error",
+        message:
+          error instanceof Error
+            ? error.message
+            : "Something went wrong. Please try again.",
+      });
+      setToast({
+        type: "error",
+        message: "Message not sent. Your details are still here to retry.",
+      });
+    }
   };
 
   useEffect(() => () => document.body.classList.remove("dialog-open"), []);
@@ -123,19 +190,19 @@ export default function SiteFooter() {
             <div>
               <Icon name="phone" />
               <p>Available for a quick conversation.</p>
-              <a href="tel:+84935572707">0935 572 707</a>
+              <a href={portfolioContact.phoneHref}>
+                {portfolioContact.phoneDisplay}
+              </a>
             </div>
             <div>
               <Icon name="mail" />
               <p>The best way to start a conversation.</p>
-              <a href="mailto:ngoctien20022005@gmail.com">
-                ngoctien20022005@gmail.com
-              </a>
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
             </div>
             <div>
               <Icon name="map-pin" />
               <p>Based in.</p>
-              <strong>Da Nang, Vietnam</strong>
+              <strong>{portfolioContact.location}</strong>
             </div>
           </div>
           <div className="footer-bottom" data-reveal>
@@ -151,7 +218,7 @@ export default function SiteFooter() {
             </div>
             <div className="footer-links">
               <a
-                href="https://github.com/TienTrn05"
+                href={portfolioLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -159,7 +226,7 @@ export default function SiteFooter() {
                 <Icon name="github" />
               </a>
               <a
-                href="https://www.linkedin.com/in/tr%E1%BA%A7n-nin-7b0bba355/"
+                href={portfolioLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -167,7 +234,7 @@ export default function SiteFooter() {
                 <Icon name="linkedin" />
               </a>
               <a
-                href="https://www.facebook.com/nin.tran0205"
+                href={portfolioLinks.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
@@ -209,10 +276,45 @@ export default function SiteFooter() {
             </button>
           </header>
 
-          <form className="contact-form" onSubmit={sendEmail}>
+          <form
+            className="contact-form"
+            aria-busy={formStatus.state === "sending"}
+            onSubmit={sendEmail}
+          >
             <div className="contact-recipient">
               <span>TO</span>
               <strong>{CONTACT_EMAIL}</strong>
+            </div>
+            <div className="contact-form-row">
+              <label htmlFor="contact-name">
+                <span>Your name</span>
+                <input
+                  id="contact-name"
+                  name="name"
+                  type="text"
+                  value={senderName}
+                  maxLength={80}
+                  autoComplete="name"
+                  placeholder="Nguyen Van A"
+                  autoFocus
+                  required
+                  onChange={(event) => setSenderName(event.target.value)}
+                />
+              </label>
+              <label htmlFor="contact-email">
+                <span>Your email</span>
+                <input
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  value={senderEmail}
+                  maxLength={160}
+                  autoComplete="email"
+                  placeholder="you@example.com"
+                  required
+                  onChange={(event) => setSenderEmail(event.target.value)}
+                />
+              </label>
             </div>
             <label htmlFor="contact-subject">
               <span>Title</span>
@@ -223,7 +325,6 @@ export default function SiteFooter() {
                 value={subject}
                 maxLength={120}
                 placeholder="Internship opportunity, project idea..."
-                autoFocus
                 required
                 onChange={(event) => setSubject(event.target.value)}
               />
@@ -242,15 +343,43 @@ export default function SiteFooter() {
               />
             </label>
             <div className="contact-form-footer">
-              <p>Your email app will open with this message ready to send.</p>
-              <button className="contact-send" type="submit">
-                <span>Send Message</span>
+              <p
+                className={`contact-form-status${formStatus.state === "error" ? " is-error" : ""}`}
+                role={formStatus.state === "error" ? "alert" : "status"}
+              >
+                {formStatus.message ||
+                  "Your details are sent securely so I can reply directly."}
+              </p>
+              <button
+                className="contact-send"
+                type="submit"
+                disabled={formStatus.state === "sending"}
+              >
+                <span>
+                  {formStatus.state === "sending" ? "Sending…" : "Send Message"}
+                </span>
                 <Icon name="send" />
               </button>
             </div>
           </form>
         </div>
       </dialog>
+      {toast && (
+        <div
+          className={`contact-toast contact-toast-${toast.type}`}
+          role={toast.type === "error" ? "alert" : "status"}
+        >
+          <Icon name={toast.type === "success" ? "circle-check" : "info"} />
+          <span>{toast.message}</span>
+          <button
+            type="button"
+            aria-label="Dismiss notification"
+            onClick={() => setToast(null)}
+          >
+            <Icon name="x" />
+          </button>
+        </div>
+      )}
     </footer>
   );
 }

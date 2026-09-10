@@ -9,12 +9,8 @@
   animation: badge-spark 4.8s ease-in-out infinite;
 }
 
-.brand-block-purple {
-  animation: brand-purple-breathe 4.5s ease-in-out infinite;
-}
-
-.brand-block-yellow {
-  animation: brand-yellow-step 4.5s 180ms ease-in-out infinite;
+.brand-mark img {
+  animation: rooster-mark-breathe 4.8s ease-in-out infinite;
 }
 
 .tool-motion[aria-pressed="true"] svg {
@@ -37,7 +33,7 @@
 }
 
 .header-progress {
-  filter: drop-shadow(0 0 0.45rem rgba(153, 79, 245, 0.45));
+  filter: drop-shadow(0 0 0.45rem rgba(var(--brand-rgb), 0.45));
 }
 
 /* Hero */
@@ -45,10 +41,10 @@
 .hero-copy h1 span {
   background: linear-gradient(
     100deg,
-    var(--purple) 5%,
-    #bd7dff 34%,
-    var(--yellow) 50%,
-    var(--purple) 68%
+    var(--brand) 5%,
+    var(--accent) 34%,
+    var(--highlight) 50%,
+    var(--brand) 68%
   );
   background-size: 240% 100%;
   background-clip: text;
@@ -94,8 +90,7 @@
 }
 
 .hero-eyebrow > span,
-.build-pill span,
-.learning-pulse {
+.build-pill span {
   animation: status-pulse 2.8s ease-in-out infinite;
 }
 
@@ -205,7 +200,7 @@
 }
 
 .project-list-region.is-expanded {
-  box-shadow: inset 0 -1.5rem 2rem -2rem rgba(153, 79, 245, 0.45);
+  box-shadow: inset 0 -1.5rem 2rem -2rem rgba(var(--brand-rgb), 0.45);
 }
 
 .work-footer button[aria-expanded="true"] > svg {
@@ -293,7 +288,7 @@ html:not(.no-js) .capability-card[data-reveal] {
 
 .capability-card:hover .capability-icon {
   transform: translateY(-0.2rem) rotate(-4deg);
-  box-shadow: 0 0.8rem 2rem rgba(153, 79, 245, 0.18);
+  box-shadow: 0 0.8rem 2rem rgba(var(--brand-rgb), 0.18);
 }
 
 .capability-card li {
@@ -304,95 +299,13 @@ html:not(.no-js) .capability-card[data-reveal] {
 
 .capability-card li:hover {
   padding-left: 0.45rem;
-  background: rgba(153, 79, 245, 0.07);
+  background: rgba(var(--brand-rgb), 0.07);
 }
 
 .capability-icon {
   transition:
     transform 280ms var(--ease),
     box-shadow 280ms ease;
-}
-
-/* Learning rail */
-
-.learning-browser.is-revealed .learning-browser-toolbar {
-  animation: toolbar-enter 620ms 120ms var(--ease) both;
-}
-
-.learning-browser.is-revealed .learning-card {
-  animation: learning-card-enter 720ms calc(180ms + var(--card-index, 0) * 90ms)
-    var(--ease) backwards;
-}
-
-.learning-card {
-  transition:
-    border-color 280ms ease,
-    box-shadow 280ms ease,
-    transform 280ms var(--ease);
-}
-
-.learning-card:hover {
-  border-color: color-mix(in srgb, var(--purple) 48%, var(--border));
-  box-shadow: 0 1.25rem 3rem rgba(5, 12, 23, 0.1);
-  transform: translateY(-0.4rem);
-}
-
-.learning-card-visual::before {
-  animation: learning-diamond-drift 10s linear infinite;
-}
-
-.learning-card-visual::after {
-  animation: learning-orbit-breathe 4.8s ease-in-out infinite;
-}
-
-.learning-card-icon {
-  transition:
-    transform 300ms var(--ease),
-    background-color 300ms ease,
-    box-shadow 300ms ease;
-}
-
-.learning-card:hover .learning-card-icon {
-  background: rgba(5, 12, 23, 0.46);
-  box-shadow: 0 0 0 0.55rem rgba(255, 255, 255, 0.07);
-  transform: translateY(-0.25rem) scale(1.06);
-}
-
-.learning-card-visual > div span {
-  transition:
-    background-color 240ms ease,
-    transform 240ms var(--ease);
-}
-
-.learning-card:hover .learning-card-visual > div span:nth-child(1) {
-  transform: translateY(-0.2rem);
-}
-
-.learning-card:hover .learning-card-visual > div span:nth-child(2) {
-  transform: translateY(-0.35rem);
-}
-
-.learning-card:hover .learning-card-visual > div span:nth-child(3) {
-  transform: translateY(-0.2rem);
-}
-
-.learning-card-body li {
-  transition:
-    border-color 220ms ease,
-    background-color 220ms ease,
-    color 220ms ease,
-    transform 220ms var(--ease);
-}
-
-.learning-card-body li:hover {
-  border-color: var(--purple);
-  background: var(--purple);
-  color: #fff;
-  transform: translateY(-0.18rem);
-}
-
-.learning-controls button:active {
-  transform: translateY(0) scale(0.9);
 }
 
 /* Footer and dialogs */
@@ -422,7 +335,7 @@ html:not(.no-js) .capability-card[data-reveal] {
   background: linear-gradient(
     180deg,
     transparent,
-    rgba(153, 79, 245, 0.1),
+    rgba(var(--brand-rgb), 0.1),
     transparent
   );
   content: "";
@@ -594,27 +507,13 @@ html:not(.no-js) .capability-card[data-reveal] {
   animation-delay: 330ms;
 }
 
-@keyframes brand-purple-breathe {
+@keyframes rooster-mark-breathe {
   0%,
   100% {
-    box-shadow: 0 0 0 rgba(153, 79, 245, 0);
-    filter: saturate(1);
+    filter: saturate(1) drop-shadow(0 0 0 rgba(var(--brand-rgb), 0));
   }
   50% {
-    box-shadow: 0 0 1rem rgba(153, 79, 245, 0.42);
-    filter: saturate(1.35);
-  }
-}
-
-@keyframes brand-yellow-step {
-  0%,
-  100% {
-    box-shadow: 0 0 0 rgba(255, 196, 31, 0);
-    filter: brightness(1);
-  }
-  50% {
-    box-shadow: 0 0 0.8rem rgba(255, 196, 31, 0.46);
-    filter: brightness(1.2);
+    filter: saturate(1.2) drop-shadow(0 0 0.45rem rgba(var(--brand-rgb), 0.34));
   }
 }
 
@@ -792,11 +691,11 @@ html:not(.no-js) .capability-card[data-reveal] {
 @keyframes repository-icon-float {
   0%,
   100% {
-    box-shadow: 0 0 2.5rem rgba(153, 79, 245, 0.3);
+    box-shadow: 0 0 2.5rem rgba(var(--brand-rgb), 0.3);
     transform: translateY(0) rotate(0);
   }
   50% {
-    box-shadow: 0 0 3.25rem rgba(153, 79, 245, 0.52);
+    box-shadow: 0 0 3.25rem rgba(var(--brand-rgb), 0.52);
     transform: translateY(-0.45rem) rotate(-3deg);
   }
 }
@@ -824,52 +723,6 @@ html:not(.no-js) .capability-card[data-reveal] {
   to {
     opacity: 1;
     transform: rotate(0) scale(1);
-  }
-}
-
-@keyframes toolbar-enter {
-  from {
-    opacity: 0;
-    transform: translateX(-1rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes learning-card-enter {
-  from {
-    opacity: 0;
-    transform: translateY(1.5rem) scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes learning-diamond-drift {
-  from {
-    transform: rotate(35deg) scale(0.96);
-  }
-  50% {
-    transform: rotate(215deg) scale(1.06);
-  }
-  to {
-    transform: rotate(395deg) scale(0.96);
-  }
-}
-
-@keyframes learning-orbit-breathe {
-  0%,
-  100% {
-    opacity: 0.6;
-    transform: scale(0.92);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.06);
   }
 }
 
@@ -1070,26 +923,6 @@ html:not(.no-js) .capability-card[data-reveal] {
     translate3d(var(--project-shift-x), var(--project-shift-y), 0);
 }
 
-.building-visual {
-  background-size: 180% 180%;
-}
-
-.building-card:nth-child(2) .building-visual {
-  animation-delay: -2.5s;
-}
-
-.building-card:nth-child(3) .building-visual {
-  animation-delay: -5s;
-}
-
-.building-card:nth-child(4) .building-visual {
-  animation-delay: -1.25s;
-}
-
-.building-card:nth-child(5) .building-visual {
-  animation-delay: -3.75s;
-}
-
 .fullstack-system.is-revealed .stack-surface-front {
   animation: stack-surface-left 760ms 100ms var(--ease) backwards;
 }
@@ -1208,11 +1041,11 @@ html:not(.no-js) .capability-card[data-reveal] {
 @keyframes contract-orbit-pulse {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(153, 79, 245, 0.08);
+    box-shadow: 0 0 0 0 rgba(var(--brand-rgb), 0.08);
     transform: scale(0.95);
   }
   50% {
-    box-shadow: 0 0 0 1rem rgba(153, 79, 245, 0);
+    box-shadow: 0 0 0 1rem rgba(var(--brand-rgb), 0);
     transform: scale(1.05);
   }
 }

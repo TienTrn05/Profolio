@@ -1,4 +1,5 @@
 import Icon from "../ui/Icon";
+import { portfolioLinks } from "../../config/portfolio";
 
 const capabilities = [
   {
@@ -58,7 +59,7 @@ export default function Hero() {
             </a>
             <a
               className="button button-outline"
-              href="assets/TranNgocTien_Resume.pdf"
+              href={portfolioLinks.resume}
               download
             >
               <Icon name="file-down" />

@@ -22,7 +22,7 @@ html[data-theme="dark"] .section-services {
     ),
     radial-gradient(
       circle at 88% 82%,
-      rgba(153, 79, 245, 0.17),
+      rgba(var(--brand-rgb), 0.17),
       transparent 28rem
     ),
     #09121f;
@@ -136,8 +136,8 @@ html[data-theme="dark"] .section-services {
 }
 
 .stack-surface-back .surface-icon {
-  background: rgba(153, 79, 245, 0.17);
-  color: #b879ff;
+  background: rgba(var(--brand-rgb), 0.17);
+  color: var(--accent);
 }
 
 .surface-icon svg {
@@ -196,7 +196,7 @@ html[data-theme="dark"] .section-services {
 }
 
 .stack-surface-back .surface-capabilities svg {
-  color: #b879ff;
+  color: var(--accent);
 }
 
 .surface-stack {
@@ -220,7 +220,7 @@ html[data-theme="dark"] .section-services {
 }
 
 .stack-surface-back .surface-stack > div span {
-  background: rgba(153, 79, 245, 0.14);
+  background: rgba(var(--brand-rgb), 0.14);
   color: #d2adff;
 }
 
@@ -272,7 +272,7 @@ html[data-theme="dark"] .section-services {
   position: absolute;
   width: 8rem;
   height: 8rem;
-  border: 1px solid rgba(153, 79, 245, 0.35);
+  border: 1px solid rgba(var(--brand-rgb), 0.35);
   border-radius: 50%;
   background: rgba(9, 18, 31, 0.93);
 }

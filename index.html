@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#050c17" />
+    <meta name="theme-color" content="#eaf6ff" />
     <meta
       name="description"
       content="Portfolio of Trần Ngọc Tiến, a full-stack developer building Flutter and React interfaces with Node.js APIs and SQL data."
@@ -12,6 +12,15 @@
     <meta name="robots" content="index, follow" />
     <script>
       try {
+        const savedTheme = localStorage.getItem("tien-portfolio-theme");
+        document.documentElement.dataset.theme =
+          savedTheme === "dark" ? "dark" : "light";
+        document
+          .querySelector('meta[name="theme-color"]')
+          ?.setAttribute(
+            "content",
+            savedTheme === "dark" ? "#050816" : "#eaf6ff",
+          );
         const savedMotion = localStorage.getItem("tien-portfolio-motion");
         document.documentElement.dataset.motion =
           savedMotion === "full" || savedMotion === "reduced"
@@ -20,6 +29,7 @@
               ? "reduced"
               : "full";
       } catch {
+        document.documentElement.dataset.theme = "light";
         document.documentElement.dataset.motion = "full";
       }
     </script>
@@ -45,7 +55,11 @@
     />
     <meta name="twitter:image" content="assets/images/og-cover.jpg" />
     <title>Trần Ngọc Tiến — Student Software Developer</title>
-    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="icon"
+      href="assets/icons/tien-rooster-mark.svg"
+      type="image/svg+xml"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

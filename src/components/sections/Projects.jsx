@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { portfolioLinks } from "../../config/portfolio";
 import Icon from "../ui/Icon";
 import HealthMonitorProject from "../projects/HealthMonitorProject";
 import MoneyBoysProject from "../projects/MoneyBoysProject";
@@ -74,7 +75,7 @@ export default function Projects({ onOpenCaseStudy }) {
           </button>
           <a
             className="button button-github"
-            href="https://github.com/TienTrn05"
+            href={portfolioLinks.github}
             target="_blank"
             rel="noopener noreferrer"
           >

@@ -1,0 +1,230 @@
+/* A compact workflow layer: tools are shown by their job, not as capabilities. */
+
+.section-workflow-tools {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(4.5rem, 7vw, 7rem);
+  background:
+    radial-gradient(
+      circle at 18% 20%,
+      rgba(var(--brand-rgb), 0.09),
+      transparent 25rem
+    ),
+    radial-gradient(
+      circle at 84% 75%,
+      rgba(14, 165, 233, 0.07),
+      transparent 22rem
+    ),
+    var(--surface);
+  color: var(--text);
+}
+
+.section-workflow-tools::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(var(--brand-rgb), 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--brand-rgb), 0.045) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  content: "";
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 30%,
+    #000 75%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+.section-workflow-tools .section-heading {
+  position: relative;
+  z-index: 1;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.section-workflow-tools .section-heading > p {
+  max-width: 49rem;
+  color: var(--muted);
+}
+
+.workflow-marquee {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 9%,
+    #000 91%,
+    transparent
+  );
+}
+
+.workflow-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: workflow-marquee 34s linear infinite;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.workflow-tool-set {
+  display: flex;
+  flex: none;
+  gap: 1rem;
+  padding: 0.75rem 0.5rem;
+  margin: 0;
+  list-style: none;
+}
+
+.workflow-tool {
+  display: grid;
+  width: 17rem;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1rem 1.2rem;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  box-shadow: 0 0.8rem 2.2rem rgba(18, 28, 45, 0.07);
+  backdrop-filter: blur(12px);
+  transition:
+    border-color 220ms ease,
+    background-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
+}
+
+.workflow-tool:hover {
+  border-color: rgba(var(--brand-rgb), 0.52);
+  background: var(--surface-raised);
+  box-shadow: 0 1.2rem 2.8rem rgba(82, 40, 140, 0.15);
+  transform: translateY(-0.3rem);
+}
+
+.workflow-tool-icon {
+  display: grid;
+  width: 4rem;
+  height: 4rem;
+  place-items: center;
+  border: 1px solid rgba(119, 128, 161, 0.16);
+  border-radius: 0.85rem;
+  background: var(--surface-soft);
+  transition: transform 240ms var(--ease);
+}
+
+.workflow-tool-icon svg {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.workflow-tool:hover .workflow-tool-icon {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+.workflow-tool > span:last-child {
+  display: grid;
+  min-width: 0;
+  gap: 0.15rem;
+}
+
+.workflow-tool strong {
+  overflow: hidden;
+  font-size: 0.98rem;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.workflow-tool small {
+  color: var(--muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.workflow-marquee:hover .workflow-marquee-track,
+.workflow-marquee:focus-within .workflow-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes workflow-marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+html[data-motion="reduced"] .workflow-marquee {
+  overflow: visible;
+  mask-image: none;
+}
+
+html[data-motion="reduced"] .workflow-marquee-track {
+  width: 100%;
+  animation: none;
+  transform: none;
+  will-change: auto;
+}
+
+html[data-motion="reduced"] .workflow-tool-set {
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-inline: 2rem;
+}
+
+html[data-motion="reduced"] .workflow-tool-set[aria-hidden="true"] {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion="full"]) .workflow-marquee {
+    overflow: visible;
+    mask-image: none;
+  }
+
+  html:not([data-motion="full"]) .workflow-marquee-track {
+    width: 100%;
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+
+  html:not([data-motion="full"]) .workflow-tool-set {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-inline: 2rem;
+  }
+
+  html:not([data-motion="full"]) .workflow-tool-set[aria-hidden="true"] {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .workflow-marquee {
+    mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 5%,
+      #000 95%,
+      transparent
+    );
+  }
+
+  .workflow-tool {
+    width: 15rem;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    padding: 0.9rem 1rem;
+  }
+
+  .workflow-tool-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}

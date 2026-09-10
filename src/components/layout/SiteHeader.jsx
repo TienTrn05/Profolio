@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
-
-const navigation = [
-  ["home", "Home"],
-  ["work", "Projects"],
-  ["stack", "Capabilities"],
-  ["building", "Next"],
-];
+import { portfolioLinks, portfolioNavigation } from "../../config/portfolio";
+import Icon from "../ui/Icon";
 
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -26,7 +21,7 @@ export default function SiteHeader() {
       );
       const probe = y + 64 + innerHeight * 0.2;
       let current = "home";
-      navigation.forEach(([id]) => {
+      portfolioNavigation.forEach(({ id }) => {
         if ((document.getElementById(id)?.offsetTop ?? Infinity) <= probe)
           current = id;
       });
@@ -64,66 +59,101 @@ export default function SiteHeader() {
   }, [menuOpen]);
 
   return (
-    <header
-      className={`site-header${scrolled ? " is-scrolled" : ""}${hidden ? " is-hidden" : ""}${menuOpen ? " is-menu-open" : ""}`}
-      data-header
-    >
-      <nav className="nav-container" aria-label="Primary navigation">
-        <a className="brand" href="#home" aria-label="Tien — Home">
-          <span className="brand-mark" aria-hidden="true">
-            <span className="brand-block brand-block-purple" />
-            <span className="brand-block brand-block-shadow" />
-            <span className="brand-block brand-block-yellow" />
-          </span>
-          <span className="brand-name">Tien.</span>
-        </a>
-        <div className="desktop-nav">
-          <ul className="nav-list">
-            {navigation.map(([id, label]) => (
+    <>
+      <header
+        className={`site-header${scrolled ? " is-scrolled" : ""}${hidden ? " is-hidden" : ""}${menuOpen ? " is-menu-open" : ""}`}
+        data-header
+      >
+        <nav className="nav-container" aria-label="Primary navigation">
+          <a className="brand" href="#home" aria-label="Tien — Home">
+            <span className="brand-mark" aria-hidden="true">
+              <img src="/assets/icons/tien-rooster-mark.svg" alt="" />
+            </span>
+            <span className="brand-name">Tien.</span>
+          </a>
+
+          <div className="desktop-nav header-identity">
+            <span>
+              <small>PORTFOLIO / 2026</small>
+              <strong>Full-stack Developer</strong>
+            </span>
+            <a className="nav-resume" href={portfolioLinks.resume} download>
+              <span>Résumé</span>
+              <Icon name="file-down" />
+            </a>
+          </div>
+
+          <button
+            className="menu-button"
+            type="button"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </nav>
+        <div className="mobile-menu" id="mobile-menu" hidden={!menuOpen}>
+          <ul>
+            {portfolioNavigation.map(({ id, label, eyebrow }) => (
               <li key={id}>
-                <a
-                  className={`nav-link${activeSection === id ? " is-active" : ""}`}
-                  href={`#${id}`}
-                  aria-current={activeSection === id ? "page" : undefined}
-                >
-                  {label}
+                <a href={`#${id}`} onClick={() => setMenuOpen(false)}>
+                  <span>{label}</span>
+                  <small>{eyebrow}</small>
                 </a>
               </li>
             ))}
           </ul>
-          <a className="nav-cta" href="#contact">
-            Let&apos;s Chat
-          </a>
         </div>
-        <button
-          className="menu-button"
-          type="button"
-          aria-expanded={menuOpen}
-          aria-controls="mobile-menu"
-          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
-      </nav>
-      <div className="mobile-menu" id="mobile-menu" hidden={!menuOpen}>
+        <span
+          className="header-progress"
+          aria-hidden="true"
+          style={{ transform: `scaleX(${progress})` }}
+        />
+      </header>
+
+      <nav className="proof-dock" aria-label="Portfolio sections">
+        <span className="proof-dock-status" aria-hidden="true">
+          <i />
+          OPEN TO WORK
+        </span>
         <ul>
-          {[...navigation, ["contact", "Let's Chat"]].map(([id, label]) => (
-            <li key={id}>
-              <a href={`#${id}`} onClick={() => setMenuOpen(false)}>
-                {label}
-              </a>
-            </li>
-          ))}
+          {portfolioNavigation.map(({ id, label, eyebrow, hint, icon }) => {
+            const isActive = activeSection === id;
+            return (
+              <li key={id}>
+                <a
+                  className={`proof-dock-link${isActive ? " is-active" : ""}`}
+                  href={`#${id}`}
+                  aria-label={`${label}: ${hint}`}
+                  aria-current={isActive ? "location" : undefined}
+                >
+                  <span className="proof-dock-preview" aria-hidden="true">
+                    <small>{eyebrow}</small>
+                    <strong>{hint}</strong>
+                  </span>
+                  <Icon name={icon} />
+                  <span className="proof-dock-label">{label}</span>
+                </a>
+              </li>
+            );
+          })}
         </ul>
-      </div>
-      <span
-        className="header-progress"
-        aria-hidden="true"
-        style={{ transform: `scaleX(${progress})` }}
-      />
-    </header>
+        <span
+          className="proof-dock-meter"
+          role="progressbar"
+          aria-label="Page reading progress"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow={Math.round(progress * 100)}
+          style={{ "--page-progress": `${progress * 360}deg` }}
+        >
+          <span>{Math.round(progress * 100)}</span>
+        </span>
+      </nav>
+    </>
   );
 }

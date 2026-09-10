@@ -27,7 +27,7 @@ export default function DisplaySettings() {
     document.documentElement.dataset.theme = theme;
     document
       .querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", theme === "dark" ? "#0a111b" : "#050c17");
+      ?.setAttribute("content", theme === "dark" ? "#050816" : "#eaf6ff");
     try {
       localStorage.setItem("tien-portfolio-theme", theme);
     } catch {

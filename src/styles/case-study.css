@@ -174,7 +174,7 @@
   background:
     radial-gradient(
       circle at 18% 16%,
-      rgba(153, 79, 245, 0.26),
+      rgba(var(--brand-rgb), 0.26),
       transparent 32%
     ),
     #070d18;
@@ -390,7 +390,7 @@
   background:
     radial-gradient(
       circle at 92% 15%,
-      rgba(153, 79, 245, 0.18),
+      rgba(var(--brand-rgb), 0.18),
       transparent 28%
     ),
     #09131f;

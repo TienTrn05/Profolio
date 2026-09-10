@@ -4,7 +4,7 @@
   html,
   body {
     cursor:
-      url("/assets/icons/cursor-purple.svg") 4 3,
+      url("/assets/icons/cursor-sky.svg") 4 3,
       auto;
   }
 
@@ -21,8 +21,35 @@
   input[type="reset"],
   input[type="submit"] {
     cursor:
-      url("/assets/icons/cursor-purple-pointer.svg") 10 4,
-      pointer;
+      url("/assets/icons/cursor-sky-pointer.svg") 10 4,
+      pointer !important;
+  }
+
+  html[data-theme="dark"],
+  html[data-theme="dark"] body {
+    cursor:
+      url("/assets/icons/cursor-cosmic.svg") 4 3,
+      auto;
+  }
+
+  html[data-theme="dark"]
+    :is(
+      a,
+      button,
+      summary,
+      label[for],
+      select,
+      [role="button"],
+      input[type="button"],
+      input[type="checkbox"],
+      input[type="radio"],
+      input[type="range"],
+      input[type="reset"],
+      input[type="submit"]
+    ) {
+    cursor:
+      url("/assets/icons/cursor-cosmic-pointer.svg") 10 4,
+      pointer !important;
   }
 
   input:not([type="button"]):not([type="checkbox"]):not([type="radio"]):not(

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { DisplaySettings, SiteFooter, SiteHeader } from "./components/layout";
 import { CaseStudyDialog } from "./components/overlays";
-import { Hero, LearningJourney, Skills, Projects } from "./components/sections";
+import { Hero, Projects, Skills, WorkflowTools } from "./components/sections";
 import { usePortfolioEffects } from "./hooks/usePortfolioEffects";
 
 export default function App() {
@@ -18,7 +18,7 @@ export default function App() {
         <Hero />
         <Projects onOpenCaseStudy={setActiveCaseStudy} />
         <Skills />
-        <LearningJourney />
+        <WorkflowTools />
       </main>
       <SiteFooter />
       <CaseStudyDialog

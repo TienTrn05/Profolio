@@ -9,9 +9,9 @@
   left: 0;
   width: 100%;
   min-height: var(--header-height);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-  background: var(--dark);
-  color: #fff;
+  border-bottom: 2px solid var(--border-soft);
+  background: var(--chrome);
+  color: var(--chrome-text);
   animation: header-enter 650ms var(--ease) backwards;
   transition:
     box-shadow 260ms ease,
@@ -21,8 +21,8 @@
 }
 
 .site-header.is-scrolled {
-  background: rgba(5, 12, 23, 0.92);
-  box-shadow: 0 0.75rem 2rem rgba(5, 12, 23, 0.18);
+  background: var(--chrome);
+  box-shadow: 0 0.75rem 2rem rgba(7, 27, 47, 0.13);
   backdrop-filter: blur(16px);
 }
 
@@ -31,7 +31,7 @@
 }
 
 .site-header.is-menu-open {
-  background: var(--dark);
+  background: var(--chrome);
   transform: translateY(0);
 }
 
@@ -41,7 +41,13 @@
   bottom: -2px;
   left: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--purple), #3d8df5, var(--yellow));
+  background: linear-gradient(
+    90deg,
+    var(--progress-green),
+    var(--progress-yellow),
+    var(--progress-orange),
+    var(--progress-red)
+  );
   transform: scaleX(0);
   transform-origin: left center;
   will-change: transform;
@@ -63,39 +69,17 @@
 
 .brand-mark {
   position: relative;
-  width: 1.8rem;
-  height: 1.8rem;
-  transition: transform 300ms var(--ease);
-}
-
-.brand-block {
-  position: absolute;
   display: block;
+  width: 2.35rem;
+  height: 2.35rem;
   transition: transform 300ms var(--ease);
 }
 
-.brand-block-purple {
-  top: 0;
-  left: 0;
-  width: 1.05rem;
-  height: 1.8rem;
-  background: var(--purple);
-}
-
-.brand-block-shadow {
-  top: 0.56rem;
-  left: 0;
-  width: 1.35rem;
-  height: 1px;
-  background: rgba(5, 12, 23, 0.6);
-}
-
-.brand-block-yellow {
-  right: 0;
-  bottom: 0;
-  width: 0.58rem;
-  height: 1.2rem;
-  background: var(--yellow);
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.7rem;
+  box-shadow: 0 0.45rem 1.2rem rgba(var(--brand-rgb), 0.18);
 }
 
 .brand-name {
@@ -106,15 +90,7 @@
 }
 
 .brand:hover .brand-mark {
-  transform: rotate(-5deg) scale(1.08);
-}
-
-.brand:hover .brand-block-purple {
-  transform: translateY(-0.18rem);
-}
-
-.brand:hover .brand-block-yellow {
-  transform: translateY(0.18rem);
+  transform: rotate(-4deg) translateY(-0.1rem) scale(1.07);
 }
 
 .site-header.is-scrolled .brand-mark {
@@ -125,6 +101,55 @@
   display: flex;
   align-items: center;
   gap: 2rem;
+}
+
+.header-identity {
+  gap: 1.4rem;
+}
+
+.header-identity > span {
+  display: grid;
+  justify-items: end;
+  line-height: 1.2;
+}
+
+.header-identity small {
+  color: var(--muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.57rem;
+  letter-spacing: 0.11em;
+}
+
+.header-identity strong {
+  margin-top: 0.2rem;
+  font-size: 0.82rem;
+}
+
+.nav-resume {
+  display: inline-flex;
+  min-height: 2.65rem;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 0.7rem;
+  padding: 0.65rem 0.85rem;
+  background: var(--surface-soft);
+  font-size: 0.76rem;
+  font-weight: 700;
+  transition:
+    border-color 200ms ease,
+    background-color 200ms ease,
+    transform 200ms var(--ease);
+}
+
+.nav-resume:hover {
+  border-color: var(--brand);
+  background: rgba(var(--brand-rgb), 0.14);
+  transform: translateY(-0.15rem);
+}
+
+.nav-resume svg {
+  width: 1rem;
 }
 
 .nav-list {
@@ -221,7 +246,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(153, 79, 245, 0.24),
+    rgba(var(--brand-rgb), 0.24),
     transparent
   );
   content: "";
@@ -244,7 +269,7 @@
   width: 100%;
   height: 2px;
   margin: 0.35rem 0;
-  background: #fff;
+  background: var(--chrome-text);
   transition:
     transform 250ms ease,
     opacity 250ms ease;
@@ -270,7 +295,7 @@
   left: 0;
   height: calc(100dvh - var(--header-height));
   overflow-y: auto;
-  background: rgba(5, 12, 23, 0.98);
+  background: var(--dock-bg);
   color: #fff;
   overscroll-behavior: contain;
 }
@@ -291,9 +316,264 @@
   font-weight: 700;
 }
 
+.mobile-menu a small {
+  align-self: center;
+  color: rgba(255, 255, 255, 0.48);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+}
+
 .mobile-menu a::after {
   color: var(--purple);
   content: "↗";
+}
+
+/* Proof Dock: the portfolio's persistent evidence map. */
+
+.proof-dock {
+  position: fixed;
+  z-index: 95;
+  bottom: 1.35rem;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 1.35rem;
+  padding: 0.55rem;
+  background: var(--dock-bg);
+  color: #fff;
+  box-shadow:
+    0 1.5rem 4rem rgba(5, 12, 23, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px) saturate(1.2);
+  transform: translateX(-50%);
+  animation: proof-dock-enter 720ms 420ms var(--ease) backwards;
+}
+
+.proof-dock-status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-inline: 0.45rem 0.65rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+}
+
+.proof-dock-status i {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: #43d68d;
+  box-shadow: 0 0 0 0.24rem rgba(67, 214, 141, 0.12);
+  animation: dock-status-pulse 2.6s ease-in-out infinite;
+}
+
+.proof-dock ul {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.proof-dock-link {
+  position: relative;
+  display: flex;
+  width: 3.35rem;
+  height: 3.35rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  overflow: visible;
+  border: 1px solid transparent;
+  border-radius: 0.9rem;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.62);
+  transition:
+    width 320ms var(--ease),
+    gap 320ms var(--ease),
+    border-color 220ms ease,
+    background-color 220ms ease,
+    color 220ms ease,
+    transform 240ms var(--ease);
+}
+
+.proof-dock-link > svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex: none;
+}
+
+.proof-dock-link:hover,
+.proof-dock-link:focus-visible {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.09);
+  color: #fff;
+  transform: translateY(-0.18rem);
+}
+
+.proof-dock-link.is-active {
+  width: 8.1rem;
+  gap: 0.55rem;
+  background: linear-gradient(135deg, var(--brand), var(--accent));
+  color: #fff;
+}
+
+.proof-dock-label {
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition:
+    max-width 300ms var(--ease),
+    opacity 180ms ease;
+}
+
+.proof-dock-link.is-active .proof-dock-label {
+  max-width: 5.2rem;
+  opacity: 1;
+}
+
+.proof-dock-link.is-active > svg {
+  animation: dock-active-icon 2.8s ease-in-out infinite;
+}
+
+.proof-dock-preview {
+  position: absolute;
+  bottom: calc(100% + 0.9rem);
+  left: 50%;
+  display: grid;
+  min-width: 11.5rem;
+  gap: 0.18rem;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 0.8rem;
+  padding: 0.75rem 0.85rem;
+  background: rgba(5, 12, 23, 0.96);
+  box-shadow: 0 1rem 2.5rem rgba(5, 12, 23, 0.24);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 0.55rem) scale(0.96);
+  transition:
+    opacity 180ms ease,
+    transform 240ms var(--ease);
+}
+
+.proof-dock-preview::after {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.13);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+  background: var(--dock-bg);
+  content: "";
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.proof-dock-preview small {
+  color: var(--yellow);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.54rem;
+  letter-spacing: 0.09em;
+}
+
+.proof-dock-preview strong {
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.proof-dock-link:hover .proof-dock-preview,
+.proof-dock-link:focus-visible .proof-dock-preview {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
+.proof-dock-meter {
+  position: relative;
+  display: grid;
+  width: 3.1rem;
+  height: 3.1rem;
+  flex: none;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    var(--progress-green) 0deg 90deg,
+    var(--progress-yellow) 90deg 180deg,
+    var(--progress-orange) 180deg 270deg,
+    var(--progress-red) 270deg 360deg
+  );
+  filter: drop-shadow(0 0 0.5rem rgba(var(--brand-rgb), 0.2));
+  place-items: center;
+}
+
+.proof-dock-meter::before {
+  position: absolute;
+  inset: 0.2rem;
+  border-radius: inherit;
+  z-index: 1;
+  background: var(--dock-bg);
+  content: "";
+}
+
+.proof-dock-meter::after {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: inherit;
+  background: conic-gradient(
+    transparent 0deg var(--page-progress),
+    var(--dock-track) var(--page-progress) 360deg
+  );
+  content: "";
+}
+
+.proof-dock-meter > span {
+  position: relative;
+  z-index: 2;
+  color: rgba(255, 255, 255, 0.72);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.55rem;
+  font-weight: 700;
+}
+
+@keyframes dock-status-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(67, 214, 141, 0.24);
+  }
+  50% {
+    box-shadow: 0 0 0 0.42rem rgba(67, 214, 141, 0);
+  }
+}
+
+@keyframes dock-active-icon {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-0.13rem) rotate(-4deg);
+  }
+}
+
+@keyframes proof-dock-enter {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 1.5rem) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
 }
 
 .mobile-menu:not([hidden]) li {
@@ -343,18 +623,6 @@
   to {
     opacity: 1;
     transform: translateX(0);
-  }
-}
-
-@keyframes brand-block-glow {
-  0%,
-  100% {
-    box-shadow: 0 0 0 rgba(153, 79, 245, 0);
-    filter: saturate(1);
-  }
-  50% {
-    box-shadow: 0 0 1rem rgba(153, 79, 245, 0.5);
-    filter: saturate(1.25);
   }
 }
 

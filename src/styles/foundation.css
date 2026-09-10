@@ -1,35 +1,9 @@
 /* Theme tokens, reset, typography and global utilities. */
 
 :root {
-  color-scheme: light;
-  --dark: #050c17;
-  --dark-soft: #0b1421;
-  --purple: #994ff5;
-  --purple-deep: #7d35dc;
-  --yellow: #ffc41f;
-  --sky: #0ea5e9;
-  --page: #ffffff;
-  --surface: #ffffff;
-  --surface-soft: #f7f8fa;
-  --text: #050c17;
-  --muted: #7780a1;
-  --border: rgba(119, 128, 161, 0.2);
-  --border-soft: rgba(119, 128, 161, 0.12);
   --container: 104rem;
   --header-height: 3.75rem;
   --section-space: 7rem;
-  --ease: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-}
-
-html[data-theme="dark"] {
-  color-scheme: dark;
-  --page: #0a111b;
-  --surface: #0d1622;
-  --surface-soft: #101b29;
-  --text: #f5f7fb;
-  --muted: #a7b0c8;
-  --border: rgba(255, 255, 255, 0.16);
-  --border-soft: rgba(255, 255, 255, 0.1);
 }
 
 *,

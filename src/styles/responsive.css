@@ -6,20 +6,6 @@
   :root {
     --container: 88rem;
   }
-
-  .learning-card {
-    grid-template-columns: 1fr;
-  }
-
-  .learning-card-visual {
-    width: 12.5rem;
-    justify-self: center;
-  }
-
-  .learning-card-body {
-    width: 100%;
-    min-height: 15.5rem;
-  }
 }
 
 @media (max-width: 1279px) {
@@ -155,10 +141,6 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .learning-rail {
-    grid-auto-columns: calc((100% - 1rem) / 2);
-  }
-
   .project-view h3 {
     font-size: 1.875rem;
   }
@@ -201,9 +183,43 @@
 
   .site-tools {
     top: auto;
-    bottom: 1rem;
+    bottom: 5.9rem;
     flex-direction: row;
     gap: 0.5rem;
+  }
+
+  .proof-dock {
+    right: 0.65rem;
+    bottom: 0.65rem;
+    left: 0.65rem;
+    justify-content: center;
+    padding: 0.45rem;
+    animation: none;
+    transform: none;
+  }
+
+  .proof-dock-status,
+  .proof-dock-meter,
+  .proof-dock-preview,
+  .proof-dock-label {
+    display: none;
+  }
+
+  .proof-dock ul {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .proof-dock-link,
+  .proof-dock-link.is-active {
+    width: 3.25rem;
+    height: 3.25rem;
+    gap: 0;
+  }
+
+  .proof-dock-link.is-active {
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0.5rem 1.4rem rgba(var(--brand-rgb), 0.28);
   }
 
   .tool-button {
@@ -257,20 +273,6 @@
 
   .capability-grid {
     grid-template-columns: 1fr;
-  }
-
-  .learning-rail {
-    grid-auto-columns: 84vw;
-  }
-
-  .learning-card {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1rem;
-  }
-
-  .learning-card-visual {
-    width: min(100%, 12.5rem);
   }
 
   .capability-context {
@@ -456,7 +458,7 @@
 
   .code-window {
     box-shadow:
-      0.75rem 0.75rem 0 rgba(153, 79, 245, 0.38),
+      0.75rem 0.75rem 0 rgba(var(--brand-rgb), 0.38),
       -0.75rem -0.75rem 0 rgba(255, 196, 31, 0.18);
   }
 
