@@ -36,14 +36,11 @@ export default function Hero() {
 
           <p className="hero-description">
             I’m passionate about Full-Stack Development and the process of
-            turning ideas into meaningful digital experiences. I enjoy crafting
-            intuitive user interfaces, building reliable backend systems, and
-            bringing every part of an application together into a complete
-            product. What excites me most is solving real problems through
-            technology and continuously improving the way I design, build, and
-            think about software. I’m always curious about new tools, modern
-            technologies, and better approaches that help me create products
-            that are both thoughtful and impactful.
+            bringing ideas to life through technology. I enjoy crafting seamless
+            user experiences, building reliable backend systems, and connecting
+            every layer of an application into a complete product. I’m always
+            curious about new technologies and continuously look for better ways
+            to build software that is both thoughtful and impactful.
           </p>
 
           <div className="hero-capabilities" aria-label="Core capabilities">
