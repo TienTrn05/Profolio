@@ -35,9 +35,15 @@ export default function Hero() {
           </h1>
 
           <p className="hero-description">
-            I build end-to-end web applications with React, TypeScript, Node.js,
-            Express and SQL, supported by hands-on experience delivering
-            stateful interfaces, data integrations and realtime product flows.
+            I’m passionate about Full-Stack Development and the process of
+            turning ideas into meaningful digital experiences. I enjoy crafting
+            intuitive user interfaces, building reliable backend systems, and
+            bringing every part of an application together into a complete
+            product. What excites me most is solving real problems through
+            technology and continuously improving the way I design, build, and
+            think about software. I’m always curious about new tools, modern
+            technologies, and better approaches that help me create products
+            that are both thoughtful and impactful.
           </p>
 
           <div className="hero-capabilities" aria-label="Core capabilities">
