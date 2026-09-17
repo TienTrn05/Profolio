@@ -1,4 +1,4 @@
-/* A compact workflow layer: tools are shown by their job, not as capabilities. */
+/* A compact workflow layer: each tool has a concrete job. */
 
 .section-workflow-tools {
   position: relative;
@@ -7,12 +7,12 @@
   background:
     radial-gradient(
       circle at 18% 20%,
-      rgba(var(--brand-rgb), 0.09),
+      rgba(var(--brand-rgb), 0.17),
       transparent 25rem
     ),
     radial-gradient(
       circle at 84% 75%,
-      rgba(14, 165, 233, 0.07),
+      rgba(14, 165, 233, 0.12),
       transparent 22rem
     ),
     var(--surface);
@@ -56,8 +56,8 @@
   mask-image: linear-gradient(
     90deg,
     transparent,
-    #000 9%,
-    #000 91%,
+    #000 5%,
+    #000 95%,
     transparent
   );
 }
@@ -65,9 +65,7 @@
 .workflow-marquee-track {
   display: flex;
   width: max-content;
-  animation: workflow-marquee 34s linear infinite;
-  transform: translate3d(0, 0, 0);
-  will-change: transform;
+  animation: workflow-marquee 32s linear infinite;
 }
 
 .workflow-tool-set {
@@ -81,16 +79,19 @@
 
 .workflow-tool {
   display: grid;
-  width: 17rem;
+  width: 18rem;
   grid-template-columns: 4rem minmax(0, 1fr);
   align-items: center;
   gap: 1rem;
-  border: 1px solid var(--border);
+  border: 1px solid color-mix(in srgb, var(--tool-color) 38%, var(--border));
   border-radius: 1rem;
-  padding: 1rem 1.2rem;
-  background: color-mix(in srgb, var(--surface) 92%, transparent);
-  box-shadow: 0 0.8rem 2.2rem rgba(18, 28, 45, 0.07);
-  backdrop-filter: blur(12px);
+  padding: 1.1rem 1.2rem;
+  background: linear-gradient(
+    125deg,
+    color-mix(in srgb, var(--tool-color) 12%, var(--surface-raised)),
+    var(--surface-raised) 75%
+  );
+  box-shadow: 0 0.5rem 1.4rem rgba(18, 28, 45, 0.055);
   transition:
     border-color 220ms ease,
     background-color 220ms ease,
@@ -99,8 +100,7 @@
 }
 
 .workflow-tool:hover {
-  border-color: rgba(var(--brand-rgb), 0.52);
-  background: var(--surface-raised);
+  border-color: var(--tool-color);
   box-shadow: 0 1.2rem 2.8rem rgba(82, 40, 140, 0.15);
   transform: translateY(-0.3rem);
 }
@@ -110,15 +110,18 @@
   width: 4rem;
   height: 4rem;
   place-items: center;
-  border: 1px solid rgba(119, 128, 161, 0.16);
+  border: 1px solid color-mix(in srgb, var(--tool-color) 24%, var(--border));
   border-radius: 0.85rem;
-  background: var(--surface-soft);
+  background: color-mix(in srgb, var(--tool-color) 19%, var(--surface));
+  color: var(--tool-color);
   transition: transform 240ms var(--ease);
 }
 
 .workflow-tool-icon svg {
   width: 2.25rem;
   height: 2.25rem;
+  color: var(--tool-color);
+  fill: var(--tool-color);
 }
 
 .workflow-tool:hover .workflow-tool-icon {
@@ -147,78 +150,15 @@
   text-transform: uppercase;
 }
 
-.workflow-marquee:hover .workflow-marquee-track,
-.workflow-marquee:focus-within .workflow-marquee-track {
-  animation-play-state: paused;
-}
-
 @keyframes workflow-marquee {
   to {
     transform: translate3d(-50%, 0, 0);
   }
 }
 
-html[data-motion="reduced"] .workflow-marquee {
-  overflow: visible;
-  mask-image: none;
-}
-
-html[data-motion="reduced"] .workflow-marquee-track {
-  width: 100%;
-  animation: none;
-  transform: none;
-  will-change: auto;
-}
-
-html[data-motion="reduced"] .workflow-tool-set {
-  width: 100%;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-inline: 2rem;
-}
-
-html[data-motion="reduced"] .workflow-tool-set[aria-hidden="true"] {
-  display: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html:not([data-motion="full"]) .workflow-marquee {
-    overflow: visible;
-    mask-image: none;
-  }
-
-  html:not([data-motion="full"]) .workflow-marquee-track {
-    width: 100%;
-    animation: none;
-    transform: none;
-    will-change: auto;
-  }
-
-  html:not([data-motion="full"]) .workflow-tool-set {
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-inline: 2rem;
-  }
-
-  html:not([data-motion="full"]) .workflow-tool-set[aria-hidden="true"] {
-    display: none;
-  }
-}
-
 @media (max-width: 767px) {
-  .workflow-marquee {
-    mask-image: linear-gradient(
-      90deg,
-      transparent,
-      #000 5%,
-      #000 95%,
-      transparent
-    );
-  }
-
   .workflow-tool {
-    width: 15rem;
+    width: 16rem;
     grid-template-columns: 3.5rem minmax(0, 1fr);
     padding: 0.9rem 1rem;
   }
@@ -226,5 +166,36 @@ html[data-motion="reduced"] .workflow-tool-set[aria-hidden="true"] {
   .workflow-tool-icon {
     width: 3.5rem;
     height: 3.5rem;
+  }
+}
+
+html[data-motion="reduced"] .workflow-marquee,
+html:not([data-motion="full"]) .workflow-marquee {
+  overflow: visible;
+  mask-image: none;
+}
+
+html[data-motion="reduced"] .workflow-marquee-track,
+html:not([data-motion="full"]) .workflow-marquee-track {
+  width: 100%;
+  animation: none;
+}
+
+html[data-motion="reduced"] .workflow-tool-set,
+html:not([data-motion="full"]) .workflow-tool-set {
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-inline: 2rem;
+}
+
+html[data-motion="reduced"] .workflow-tool-set[aria-hidden="true"],
+html:not([data-motion="full"]) .workflow-tool-set[aria-hidden="true"] {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion="full"]) .workflow-marquee-track {
+    animation: none;
   }
 }

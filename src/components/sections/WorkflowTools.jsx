@@ -1,34 +1,22 @@
 import {
-  SiDocker,
   SiFigma,
+  SiFirebase,
   SiGithub,
-  SiGooglemeet,
-  SiNotion,
-  SiNpm,
-  SiOpenai,
   SiPostman,
   SiSupabase,
-  SiVercel,
   SiVite,
 } from "react-icons/si";
-import { VscVscode } from "react-icons/vsc";
 
 const workflowTools = [
   {
-    name: "Visual Studio Code",
-    role: "Code & debugging",
-    color: "#007acc",
-    icon: VscVscode,
-  },
-  {
     name: "GitHub",
-    role: "Version & review",
+    role: "Code history & review",
     color: "var(--brand-icon-neutral)",
     icon: SiGithub,
   },
   {
     name: "Postman",
-    role: "API checks",
+    role: "Request & response checks",
     color: "#ff6c37",
     icon: SiPostman,
   },
@@ -39,66 +27,40 @@ const workflowTools = [
     icon: SiFigma,
   },
   {
-    name: "Notion",
-    role: "Notes & planning",
-    color: "var(--brand-icon-neutral)",
-    icon: SiNotion,
-  },
-  {
-    name: "Google Meet",
-    role: "Team communication",
-    color: "#00897b",
-    icon: SiGooglemeet,
-  },
-  {
-    name: "Docker",
-    role: "Containers",
-    color: "#2496ed",
-    icon: SiDocker,
-  },
-  {
-    name: "ChatGPT",
-    role: "AI assistance",
-    color: "#10a37f",
-    icon: SiOpenai,
-  },
-  {
     name: "Vite",
-    role: "Local builds",
+    role: "Web builds",
     color: "#646cff",
     icon: SiVite,
   },
   {
-    name: "npm",
-    role: "Dependencies",
-    color: "#cb3837",
-    icon: SiNpm,
-  },
-  {
     name: "Supabase",
-    role: "Managed data",
+    role: "MoneyBoys data",
     color: "#3ecf8e",
     icon: SiSupabase,
   },
   {
-    name: "Vercel",
-    role: "Web delivery",
-    color: "var(--brand-icon-neutral)",
-    icon: SiVercel,
+    name: "Firebase",
+    role: "Application services",
+    color: "#e69a00",
+    icon: SiFirebase,
   },
 ];
 
-function ToolIcon({ icon: BrandIcon }) {
-  return <BrandIcon aria-hidden="true" />;
+function ToolIcon({ icon: BrandIcon, color }) {
+  return <BrandIcon aria-hidden="true" color={color} />;
 }
 
 function ToolSet({ duplicate = false }) {
   return (
     <ul className="workflow-tool-set" aria-hidden={duplicate || undefined}>
       {workflowTools.map(({ name, role, icon, color }) => (
-        <li className="workflow-tool" key={name}>
-          <span className="workflow-tool-icon" style={{ color }}>
-            <ToolIcon icon={icon} />
+        <li
+          className="workflow-tool"
+          key={name}
+          style={{ "--tool-color": color }}
+        >
+          <span className="workflow-tool-icon">
+            <ToolIcon icon={icon} color={color} />
           </span>
           <span>
             <strong>{name}</strong>
@@ -123,19 +85,15 @@ export default function WorkflowTools() {
             <span aria-hidden="true">✦</span>
             <span>How I Build</span>
           </div>
-          <h2 id="workflow-title">Tools Behind the Work</h2>
+          <h2 id="workflow-title">Development Workflow</h2>
           <p>
-            The everyday workflow I use to turn interface decisions and API
-            contracts into reviewable, deployable builds.
+            Tools I use to turn interface decisions, API contracts and project
+            data into reviewable web builds.
           </p>
         </header>
       </div>
 
-      <div
-        className="workflow-marquee"
-        aria-label="Tools used in my development workflow"
-        data-reveal
-      >
+      <div className="workflow-marquee" aria-label="Development tools">
         <div className="workflow-marquee-track">
           <ToolSet />
           <ToolSet duplicate />

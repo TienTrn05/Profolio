@@ -54,10 +54,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-.hero-media img {
-  animation: hero-image-breathe 9s ease-in-out infinite alternate;
-}
-
 .hero-media.is-revealed {
   animation: hero-frame-enter 950ms 140ms var(--ease) both;
 }
@@ -122,14 +118,6 @@
   opacity: 1;
 }
 
-.project-panel:not(:hover) .moneyboys-runtime-shot {
-  animation: project-phone-float 5s ease-in-out infinite;
-}
-
-.project-panel:not(:hover) .appstore-shot-stack {
-  animation: project-stack-breathe 5.5s ease-in-out infinite;
-}
-
 .project-evidence div,
 .project-layer-flow > span {
   transition:
@@ -148,51 +136,6 @@
   transform: translateY(-0.25rem);
 }
 
-.project-panel.is-revealed .project-media {
-  animation: project-media-enter 900ms 120ms var(--ease) both;
-}
-
-.project-panel.is-revealed .project-evidence div {
-  animation: project-detail-enter 560ms var(--ease) both;
-}
-
-.project-panel.is-revealed .project-evidence div:nth-child(1) {
-  animation-delay: 260ms;
-}
-
-.project-panel.is-revealed .project-evidence div:nth-child(2) {
-  animation-delay: 330ms;
-}
-
-.project-panel.is-revealed .project-evidence div:nth-child(3) {
-  animation-delay: 400ms;
-}
-
-.project-panel.is-revealed .project-evidence div:nth-child(4) {
-  animation-delay: 470ms;
-}
-
-.project-panel.is-revealed .project-layer-flow > span {
-  animation: system-node-enter 520ms var(--ease) both;
-}
-
-.project-panel.is-revealed .project-layer-flow > span:nth-of-type(1) {
-  animation-delay: 430ms;
-}
-
-.project-panel.is-revealed .project-layer-flow > span:nth-of-type(2) {
-  animation-delay: 520ms;
-}
-
-.project-panel.is-revealed .project-layer-flow > span:nth-of-type(3) {
-  animation-delay: 610ms;
-}
-
-.project-panel.is-revealed .project-layer-flow > svg,
-.money-flow-step > svg {
-  animation: flow-arrow 1.8s ease-in-out infinite;
-}
-
 .project-list-region {
   transition:
     border-color 300ms ease,
@@ -205,21 +148,6 @@
 
 .work-footer button[aria-expanded="true"] > svg {
   animation: social-icon-pop 450ms var(--ease);
-}
-
-.project-media-repository::before,
-.project-media-health::before {
-  animation: ambient-orbit 12s ease-in-out infinite alternate;
-}
-
-.repository-visual-icon {
-  animation: repository-icon-float 4.5s ease-in-out infinite;
-}
-
-.runtime-capture-label svg,
-.repository-evidence-label svg,
-.visual-disclaimer svg {
-  animation: evidence-marker 2.4s ease-in-out infinite;
 }
 
 /* Capability cards */
@@ -324,23 +252,6 @@ html:not(.no-js) .capability-card[data-reveal] {
 
 .contact-visual.is-revealed .code-window {
   animation: code-window-enter 850ms 140ms var(--ease) both;
-}
-
-.contact-visual.is-revealed .code-window::after {
-  position: absolute;
-  z-index: 2;
-  right: 0;
-  left: 0;
-  height: 3rem;
-  background: linear-gradient(
-    180deg,
-    transparent,
-    rgba(var(--brand-rgb), 0.1),
-    transparent
-  );
-  content: "";
-  pointer-events: none;
-  animation: code-scan 5.5s 1.2s linear infinite;
 }
 
 .contact-visual.is-revealed .code-window-bar span {
@@ -904,23 +815,18 @@ html:not(.no-js) .capability-card[data-reveal] {
 }
 
 .project-panel {
-  --project-shift-x: 0px;
-  --project-shift-y: 0px;
   transition:
     border-color 300ms ease,
-    box-shadow 300ms ease,
-    transform 300ms ease;
+    box-shadow 300ms ease;
 }
 
 .project-panel:hover {
   border-color: color-mix(in srgb, var(--purple) 52%, var(--border));
   box-shadow: 0 1.5rem 3.5rem rgba(5, 12, 23, 0.1);
-  transform: translateY(-0.35rem);
 }
 
 .project-panel:hover .project-media > img {
-  transform: scale(1.055)
-    translate3d(var(--project-shift-x), var(--project-shift-y), 0);
+  transform: scale(1.02);
 }
 
 .fullstack-system.is-revealed .stack-surface-front {
@@ -948,27 +854,6 @@ html:not(.no-js) .capability-card[data-reveal] {
 .section-heading.is-revealed > p,
 .values-header.is-revealed > p {
   animation: section-text-enter 720ms 220ms var(--ease) both;
-}
-
-.project-panel.is-revealed .project-topline {
-  animation: section-text-enter 620ms 80ms var(--ease) both;
-}
-
-.project-panel.is-revealed .project-content h3 {
-  animation: section-text-enter 680ms 160ms var(--ease) both;
-}
-
-.project-panel.is-revealed .project-view.is-visible > p,
-.project-panel.is-revealed .project-view.is-visible .feature-chips {
-  animation: section-text-enter 700ms 240ms var(--ease) both;
-}
-
-.project-panel.is-revealed .project-system-map {
-  animation: section-text-enter 700ms 330ms var(--ease) both;
-}
-
-.project-panel.is-revealed .project-actions {
-  animation: section-text-enter 700ms 420ms var(--ease) both;
 }
 
 @keyframes badge-spark {

@@ -56,7 +56,6 @@
   mask-image: linear-gradient(120deg, #000, transparent 67%);
   opacity: 0.5;
   pointer-events: none;
-  animation: hero-atmosphere-drift 18s linear infinite;
 }
 
 html[data-theme="dark"] .hero-copy::before {

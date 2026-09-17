@@ -362,8 +362,7 @@
 }
 
 .project-panel:hover .project-media > img {
-  transform: scale(1.035)
-    translate3d(var(--project-shift-x), var(--project-shift-y), 0);
+  transform: scale(1.02);
 }
 
 .project-media-moneyboys {
@@ -414,8 +413,7 @@
 }
 
 .project-panel:hover .project-media-moneyboys > .moneyboys-logo {
-  transform: scale(1.045)
-    translate3d(var(--project-shift-x), var(--project-shift-y), 0);
+  transform: scale(1.02);
 }
 
 .project-panel:hover .project-media-moneyboys > .moneyboys-runtime-shot {
@@ -491,7 +489,6 @@
   background: rgba(5, 12, 23, 0.72);
   color: #fff;
   box-shadow: 0 2rem 4rem rgba(5, 12, 23, 0.28);
-  backdrop-filter: blur(12px);
 }
 
 .repository-visual-icon {
