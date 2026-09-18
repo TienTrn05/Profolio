@@ -1,15 +1,13 @@
-/* Theme tokens, reset, typography and global utilities. */
-
 :root {
   --container: 104rem;
   --header-height: 3.75rem;
   --section-space: 7rem;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+@media (max-width: 767px) {
+  :root {
+    --section-space: 4rem;
+  }
 }
 
 html {
@@ -20,14 +18,8 @@ html {
 }
 
 body {
-  min-width: 0;
-  margin: 0;
-  overflow-x: clip;
-  background: var(--page);
-  color: var(--text);
+  @apply m-0 min-w-0 overflow-x-clip bg-page text-[1.125rem] leading-[1.7] text-ink;
   font-family: "Sora", sans-serif;
-  font-size: 1.125rem;
-  line-height: 1.7;
   text-rendering: optimizeLegibility;
   transition:
     background-color 300ms ease,
@@ -39,71 +31,14 @@ body.dialog-open {
   overflow: hidden;
 }
 
-img,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
-}
-
-button {
-  color: inherit;
-  font: inherit;
-}
-
 button:focus-visible,
 a:focus-visible,
 [tabindex="0"]:focus-visible {
-  outline: 3px solid var(--yellow);
+  outline: 3px solid var(--highlight);
   outline-offset: 4px;
 }
 
 ::selection {
-  background: var(--purple);
+  background: var(--brand);
   color: #fff;
-}
-
-.container,
-.nav-container {
-  width: min(100%, var(--container));
-  padding-inline: 2rem;
-  margin-inline: auto;
-}
-
-.sr-only {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-}
-
-.skip-link {
-  position: fixed;
-  z-index: 10000;
-  top: 0.75rem;
-  left: 0.75rem;
-  padding: 0.8rem 1rem;
-  background: var(--yellow);
-  color: var(--dark);
-  font-weight: 700;
-  transform: translateY(-160%);
-  transition: transform 180ms ease;
-}
-
-.skip-link:focus {
-  transform: translateY(0);
 }

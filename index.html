@@ -1,60 +1,34 @@
 <!doctype html>
-<html lang="en" class="no-js" data-motion="full">
+<html lang="en" class="no-js">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f7f4ff" />
     <meta
       name="description"
-      content="Portfolio of Trần Ngọc Tiến, a full-stack developer building Flutter and React interfaces with Node.js APIs and SQL data."
+      content="Trần Ngọc Tiến is a Full-stack Developer building responsive React interfaces, reliable Node.js APIs and relational data flows."
     />
     <meta name="author" content="Trần Ngọc Tiến" />
     <meta name="robots" content="index, follow" />
-    <script>
-      try {
-        const savedTheme = localStorage.getItem("tien-portfolio-theme");
-        document.documentElement.dataset.theme =
-          savedTheme === "dark" ? "dark" : "light";
-        document
-          .querySelector('meta[name="theme-color"]')
-          ?.setAttribute(
-            "content",
-            savedTheme === "dark" ? "#050816" : "#f7f4ff",
-          );
-        const savedMotion = localStorage.getItem("tien-portfolio-motion");
-        document.documentElement.dataset.motion =
-          savedMotion === "full" || savedMotion === "reduced"
-            ? savedMotion
-            : matchMedia("(prefers-reduced-motion: reduce)").matches
-              ? "reduced"
-              : "full";
-      } catch {
-        document.documentElement.dataset.theme = "light";
-        document.documentElement.dataset.motion = "full";
-      }
-    </script>
     <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="Trần Ngọc Tiến — Student Software Developer"
-    />
+    <meta property="og:title" content="Trần Ngọc Tiến — Full-stack Developer" />
     <meta
       property="og:description"
-      content="Full-stack student projects built with Flutter, React, Node.js APIs and SQL data."
+      content="Projects, engineering decisions and full-stack capabilities from Trần Ngọc Tiến."
     />
     <meta property="og:image" content="assets/images/og-cover.jpg" />
     <meta property="og:locale" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Trần Ngọc Tiến — Student Software Developer"
+      content="Trần Ngọc Tiến — Full-stack Developer"
     />
     <meta
       name="twitter:description"
-      content="Student portfolio featuring Flutter, React and Node.js full-stack projects."
+      content="Projects and full-stack engineering capabilities."
     />
     <meta name="twitter:image" content="assets/images/og-cover.jpg" />
-    <title>Trần Ngọc Tiến — Student Software Developer</title>
+    <title>Trần Ngọc Tiến — Full-stack Developer</title>
     <link
       rel="icon"
       href="assets/icons/tien-rooster-mark.svg"
@@ -66,6 +40,26 @@
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <script>
+      let savedTheme;
+      let savedMotion;
+      try {
+        savedTheme = localStorage.getItem("tien-portfolio-theme");
+        savedMotion = localStorage.getItem("tien-portfolio-motion");
+      } catch {
+        // Browser storage may be unavailable.
+      }
+      const theme = savedTheme === "dark" ? "dark" : "light";
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.dataset.motion =
+        savedMotion === "full" || savedMotion === "reduced"
+          ? savedMotion
+          : matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "reduced"
+            : "full";
+      document.querySelector('meta[name="theme-color"]').content =
+        theme === "dark" ? "#050816" : "#f7f4ff";
+    </script>
   </head>
   <body>
     <div id="root"></div>

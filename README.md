@@ -1,89 +1,36 @@
-# Tiến Portfolio
+# Trần Ngọc Tiến — Portfolio
 
-A modern personal portfolio built with **React 19** and **Vite**, showcasing project ownership, evidence-backed capabilities, and my next engineering direction.
+A Full-stack Developer portfolio built with React 19, Vite and Tailwind CSS 4. It presents three featured projects by default, an expandable project archive, capability evidence, case studies and contact options.
 
-## 🌐 Live Demo
-
-[View Live Portfolio](https://profolio-xi-pied.vercel.app/)
-
-## 🛠️ Tech Stack
-
-- **React 19** — UI development and state management
-- **Vite** — Fast development and production build tooling
-- **Lucide React** — Icon library
-- **CSS** — Custom responsive styling
-
-## ✨ Features
-
-- Responsive and modern portfolio design
-- Interactive navigation menu
-- Light/dark theme switching
-- Project case studies with ownership and implementation evidence
-- Capability map connecting tools to real project outcomes
-- Compact performance, reliability, and scaling roadmap
-- Dialog and modal components
-- Clipboard functionality
-- Scroll-based animations using `IntersectionObserver`
-- Component-based architecture with reusable React components
-
-## 📁 Project Structure
-
-```text
-src/
-├── components/
-│   ├── layout/
-│   ├── overlays/
-│   ├── projects/
-│   ├── sections/
-│   └── ui/
-├── hooks/              # Reusable effects and IntersectionObserver logic
-├── styles/             # Component and section styles
-│   └── index.css
-├── App.jsx
-└── main.jsx
-```
-
-## 🚀 Getting Started
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/yourusername/your-repository.git
-cd your-repository
-```
-
-### 2. Install dependencies
+## Run locally
 
 ```bash
 npm install
-```
-
-### 3. Start the development server
-
-```bash
 npm run dev
 ```
 
-### 4. Run linting
-
 ```bash
 npm run lint
-```
-
-### 5. Build for production
-
-```bash
+npm run format:check
 npm run build
 ```
 
-## 🧩 Architecture
+## Structure
 
-The project follows a modular component-based architecture. UI elements, layouts, project sections, overlays, and reusable hooks are separated into dedicated directories to keep the codebase maintainable and scalable.
+```text
+src/
+  components/
+    layout/       Header, display settings and contact footer
+    overlays/     Case study dialog
+    sections/     Page sections
+    ui/           Reusable icons and tags
+  features/
+    projects/     Project data, cards and visual evidence
+  config/         Navigation and portfolio links
+  hooks/          Intersection reveals and page effects
+  styles/         Theme tokens and small global motion rules
+```
 
-The application relies entirely on React state and event handling for interactive features, with proper effect cleanup for browser APIs such as `IntersectionObserver`.
+Page layouts and components use Tailwind utilities. Semantic colors come from `src/styles/tokens.css`; see [THEME_SYSTEM.md](THEME_SYSTEM.md). The workflow logos are local Devicon SVGs with their license at `public/assets/icons/brands/LICENSE.txt`.
 
-No CDN dependencies or traditional DOM manipulation scripts are used.
-
-## 📄 License
-
-This project is intended for personal portfolio and educational purposes.
+The motion toggle respects `prefers-reduced-motion` on first use. An explicit setting is stored locally. The contact form submits to FormSubmit, while email, phone and social links remain available directly.

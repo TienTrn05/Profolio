@@ -1,5 +1,3 @@
-/* Shared visual tokens. Components consume roles, never raw palette names. */
-
 :root {
   color-scheme: light;
   --brand-rgb: 112, 65, 217;
@@ -7,37 +5,16 @@
   --brand-strong: #5128ac;
   --accent: #1ba9de;
   --highlight: #f6c453;
-  --ink: #071b2f;
   --page: #f7f4ff;
-  --surface: #ffffff;
+  --surface: #fff;
   --surface-soft: #eee8ff;
-  --surface-raised: #ffffff;
+  --surface-raised: #fff;
   --text: #0b233d;
   --muted: #586b84;
   --border: rgba(112, 65, 217, 0.24);
   --border-soft: rgba(112, 65, 217, 0.13);
-  --chrome: rgba(247, 244, 255, 0.94);
-  --chrome-text: #0b233d;
-  --dock-bg: rgba(7, 34, 58, 0.94);
-  --dock-track: #263d50;
-  --footer-bg: #071b2f;
-  --footer-gradient-start: #0a4e78;
-  --footer-gradient-mid: #082e50;
   --brand-icon-neutral: #111827;
-  --progress-green: #34d399;
-  --progress-yellow: #facc15;
-  --progress-orange: #fb923c;
-  --progress-red: #f43f5e;
-  --ease: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-
-  /* Compatibility aliases while older components move to semantic roles. */
-  --dark: var(--ink);
-  --dark-soft: #0c2942;
-  --purple: var(--brand);
-  --purple-deep: var(--brand-strong);
-  --yellow: var(--highlight);
-  --sky: var(--accent);
 }
 
 html[data-theme="dark"] {
@@ -47,7 +24,6 @@ html[data-theme="dark"] {
   --brand-strong: #815de0;
   --accent: #63d7ff;
   --highlight: #f6c453;
-  --ink: #050816;
   --page: #050816;
   --surface: #0a1024;
   --surface-soft: #171331;
@@ -56,13 +32,5 @@ html[data-theme="dark"] {
   --muted: #94a8c3;
   --border: rgba(172, 139, 255, 0.25);
   --border-soft: rgba(172, 139, 255, 0.14);
-  --chrome: rgba(5, 8, 22, 0.92);
-  --chrome-text: #eff7ff;
-  --dock-bg: rgba(4, 8, 24, 0.94);
-  --dock-track: #202a45;
-  --footer-bg: #030713;
-  --footer-gradient-start: #102c64;
-  --footer-gradient-mid: #09152f;
   --brand-icon-neutral: #f8fbff;
-  --dark-soft: #091229;
 }

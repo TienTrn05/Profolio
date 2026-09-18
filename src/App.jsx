@@ -9,7 +9,10 @@ export default function App() {
   usePortfolioEffects();
   return (
     <>
-      <a className="skip-link" href="#main-content">
+      <a
+        className="fixed top-3 left-3 z-[100] -translate-y-[160%] bg-highlight px-4 py-3 font-bold text-slate-950 transition-transform focus:translate-y-0"
+        href="#main-content"
+      >
         Skip to content
       </a>
       <SiteHeader />

@@ -1,15 +1,22 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme inline {
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-accent: var(--accent);
+  --color-highlight: var(--highlight);
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
+  --color-ink: var(--text);
+  --color-muted: var(--muted);
+}
+
 @import "./tokens.css";
 @import "./foundation.css";
-@import "./navigation.css";
-@import "./shared-ui.css";
-@import "./hero.css";
-@import "./fullstack-system.css";
-@import "./skills.css";
-@import "./projects.css";
 @import "./workflow-tools.css";
-@import "./footer.css";
-@import "./case-study.css";
 @import "./reveal.css";
 @import "./cursor.css";
 @import "./motion.css";
-@import "./responsive.css";

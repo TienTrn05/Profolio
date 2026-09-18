@@ -16,7 +16,7 @@ html:not(.no-js) [data-reveal].is-revealed {
   transform: translate3d(0, 0, 0);
 }
 
-html:not(.no-js) .project-panel[data-reveal] {
+html:not(.no-js) .project-card[data-reveal] {
   transform: scale(0.975);
   transform-origin: center center;
   transition:
@@ -26,7 +26,7 @@ html:not(.no-js) .project-panel[data-reveal] {
     box-shadow 220ms ease;
 }
 
-html:not(.no-js) .project-panel[data-reveal].is-revealed {
+html:not(.no-js) .project-card[data-reveal].is-revealed {
   transform: scale(1);
 }
 
