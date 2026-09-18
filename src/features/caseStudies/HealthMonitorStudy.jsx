@@ -11,7 +11,7 @@ const healthFlow = [
 export default function HealthMonitorStudy() {
   return (
     <div>
-      <header className="bg-gradient-to-br from-sky-100 via-surface to-violet-100 p-7 md:p-10 dark:from-sky-950 dark:to-slate-900">
+      <header className="case-hero bg-gradient-to-br from-sky-100 via-surface to-violet-100 p-7 md:p-10 dark:from-sky-950 dark:to-slate-900">
         <span className="inline-flex rounded-full bg-brand px-4 py-2 text-xs font-bold text-white uppercase">
           Course Project · IoT Prototype
         </span>
@@ -51,7 +51,7 @@ export default function HealthMonitorStudy() {
             index="02 / Decisions"
             title="Filter signals and handle connection gaps."
           />
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="case-decision-list grid gap-4 md:grid-cols-3">
             {[
               [
                 "shield-check",

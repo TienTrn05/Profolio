@@ -1,7 +1,7 @@
 export default function ProjectTags({ items }) {
   return (
     <ul
-      className="m-0 flex list-none flex-wrap justify-end gap-2 p-0"
+      className="project-tags m-0 flex list-none flex-wrap justify-end gap-2 p-0 max-md:justify-start"
       aria-label="Project context"
     >
       {items.map((item) => (

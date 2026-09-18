@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { portfolioLinks } from "../../config/portfolio";
 import ProjectCard from "../../features/projects/ProjectCard";
 import { projects } from "../../features/projects/projectsData";
@@ -8,9 +8,19 @@ const DEFAULT_PROJECT_COUNT = 3;
 
 export default function Projects({ onOpenCaseStudy }) {
   const [showMore, setShowMore] = useState(false);
-  const visibleProjects = showMore
-    ? projects
-    : projects.slice(0, DEFAULT_PROJECT_COUNT);
+  const [projectListHeight, setProjectListHeight] = useState(null);
+  const projectListRef = useRef(null);
+
+  const toggleProjects = () => {
+    if (!showMore) {
+      setProjectListHeight(projectListRef.current?.offsetHeight ?? null);
+      setShowMore(true);
+      return;
+    }
+    projectListRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+    setShowMore(false);
+    setProjectListHeight(null);
+  };
 
   return (
     <section
@@ -19,8 +29,8 @@ export default function Projects({ onOpenCaseStudy }) {
       aria-labelledby="work-title"
     >
       <div className="mx-auto w-full max-w-[var(--container)] px-8 md:px-16">
-        <header className="mb-14 text-center" data-reveal>
-          <div className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-3 text-base leading-none font-semibold text-white uppercase">
+        <header className="section-heading mb-18 text-center" data-reveal>
+          <div className="section-badge inline-flex items-center gap-2 rounded-full bg-brand px-5 py-3 text-base leading-none font-semibold text-white uppercase">
             <span aria-hidden="true">✦</span>
             <span>Selected Work</span>
           </div>
@@ -36,23 +46,43 @@ export default function Projects({ onOpenCaseStudy }) {
           </p>
         </header>
 
-        <div id="project-list" className="grid gap-7">
-          {visibleProjects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              onOpenCaseStudy={onOpenCaseStudy}
-            />
-          ))}
+        <div
+          id="project-list"
+          className={`project-list-region ${showMore ? "is-expanded overflow-y-auto pr-3 [scrollbar-color:var(--brand)_var(--surface-soft)] [scrollbar-gutter:stable]" : ""}`}
+          ref={projectListRef}
+          style={
+            projectListHeight ? { height: `${projectListHeight}px` } : undefined
+          }
+          tabIndex={showMore ? 0 : undefined}
+          aria-label="Selected projects"
+        >
+          <div className="project-list grid gap-7">
+            {projects.map((project, index) => (
+              <div
+                key={project.id}
+                className={
+                  !showMore && index >= DEFAULT_PROJECT_COUNT ? "hidden" : ""
+                }
+              >
+                <ProjectCard
+                  project={project}
+                  onOpenCaseStudy={onOpenCaseStudy}
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="mt-7 flex flex-wrap items-stretch justify-center gap-4 text-center">
+        <div
+          className="work-footer mt-7 flex flex-wrap items-stretch justify-center gap-4 text-center"
+          data-reveal
+        >
           <button
             className="inline-flex min-h-14 items-center justify-center gap-2 border-2 border-slate-950 bg-slate-950 px-7 py-3 font-semibold text-white transition-colors hover:bg-brand"
             type="button"
             aria-expanded={showMore}
             aria-controls="project-list"
-            onClick={() => setShowMore((open) => !open)}
+            onClick={toggleProjects}
           >
             {showMore ? "Show Less" : "View More Projects"}
             <Icon

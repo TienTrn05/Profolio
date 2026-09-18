@@ -15,7 +15,7 @@ export default function ProjectVisual({ project }) {
 
   if (visual.type === "moneyboys") {
     return (
-      <div className="relative order-1 min-h-[27rem] overflow-hidden bg-black lg:order-2 lg:min-h-full">
+      <div className="project-media relative order-1 aspect-[4/3] min-h-0 overflow-hidden bg-black lg:order-2 lg:aspect-auto lg:min-h-full">
         <img
           className="absolute inset-0 size-full object-cover object-center brightness-75"
           src={`${base}${visual.logo}`}
@@ -41,7 +41,7 @@ export default function ProjectVisual({ project }) {
   if (visual.type === "gallery") {
     return (
       <div
-        className={`relative order-1 flex min-h-[27rem] items-center justify-center overflow-hidden lg:order-2 lg:min-h-full ${visual.theme}`}
+        className={`project-media relative order-1 flex aspect-[4/3] min-h-0 items-center justify-center overflow-hidden lg:order-2 lg:aspect-auto lg:min-h-full ${visual.theme}`}
       >
         <div className="absolute inset-5 bottom-16 flex items-center justify-center gap-2 sm:gap-4">
           {visual.images.map(([src, alt], index) => (
@@ -63,9 +63,9 @@ export default function ProjectVisual({ project }) {
 
   return (
     <div
-      className={`relative order-1 grid min-h-[27rem] place-items-center overflow-hidden p-8 lg:order-2 lg:min-h-full ${visual.theme}`}
+      className={`project-media relative order-1 grid aspect-[4/3] min-h-0 place-items-center overflow-hidden p-4 md:p-8 lg:order-2 lg:aspect-auto lg:min-h-full ${visual.theme}`}
     >
-      <div className="w-full max-w-[34rem] border border-white/25 bg-slate-950/75 p-8 text-white shadow-2xl">
+      <div className="w-full max-w-[34rem] border border-white/25 bg-slate-950/75 p-5 text-white shadow-2xl md:p-8">
         <span className="grid size-16 place-items-center rounded-full bg-brand text-white">
           <Icon name="radio-tower" />
         </span>

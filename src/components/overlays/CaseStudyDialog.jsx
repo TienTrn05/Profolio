@@ -16,7 +16,7 @@ export default function CaseStudyDialog({ open, caseStudy, onClose }) {
   return (
     <dialog
       ref={dialogRef}
-      className="m-auto max-h-[calc(100dvh-2rem)] w-[min(76rem,calc(100%-2rem))] max-w-none overflow-y-auto rounded-2xl border border-[var(--border)] bg-page p-0 text-ink shadow-2xl backdrop:bg-slate-950/75"
+      className="case-dialog m-auto max-h-[calc(100dvh-2rem)] w-[min(82rem,calc(100%-2rem))] max-w-none overflow-y-auto rounded-2xl border border-[var(--border)] bg-page p-0 text-ink shadow-2xl backdrop:bg-slate-950/75"
       aria-labelledby="case-dialog-title"
       onCancel={(event) => {
         event.preventDefault();
@@ -24,9 +24,9 @@ export default function CaseStudyDialog({ open, caseStudy, onClose }) {
       }}
       onClick={(event) => event.target === event.currentTarget && onClose()}
     >
-      <div className="relative">
+      <div className="case-dialog-shell relative">
         <button
-          className="sticky top-3 right-3 z-10 float-right mr-3 grid size-10 place-items-center rounded-full bg-slate-950 text-white shadow-xl"
+          className="absolute top-4 right-4 z-10 grid size-11 place-items-center rounded-full bg-slate-950 text-white shadow-xl"
           type="button"
           onClick={onClose}
           aria-label="Close case study"

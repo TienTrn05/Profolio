@@ -1,7 +1,5 @@
 {
   "semi": true,
   "singleQuote": false,
-  "trailingComma": "all",
-  "tailwindStylesheet": "./src/styles/index.css",
-  "plugins": ["prettier-plugin-tailwindcss"]
+  "trailingComma": "all"
 }

@@ -9,12 +9,31 @@
   --surface: #fff;
   --surface-soft: #eee8ff;
   --surface-raised: #fff;
+  --ink: #071b2f;
   --text: #0b233d;
   --muted: #586b84;
   --border: rgba(112, 65, 217, 0.24);
   --border-soft: rgba(112, 65, 217, 0.13);
+  --chrome: rgba(247, 244, 255, 0.94);
+  --chrome-text: #0b233d;
+  --dock-bg: rgba(7, 34, 58, 0.94);
+  --dock-track: #263d50;
+  --footer-bg: #071b2f;
+  --footer-gradient-start: #0a4e78;
+  --footer-gradient-mid: #082e50;
   --brand-icon-neutral: #111827;
+  --progress-green: #34d399;
+  --progress-yellow: #facc15;
+  --progress-orange: #fb923c;
+  --progress-red: #f43f5e;
+  --ease: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Temporary aliases for the shared motion layer during Tailwind migration. */
+  --purple: var(--brand);
+  --yellow: var(--highlight);
+  --dark: var(--ink);
+  --dark-soft: #0c2942;
 }
 
 html[data-theme="dark"] {
@@ -28,9 +47,18 @@ html[data-theme="dark"] {
   --surface: #0a1024;
   --surface-soft: #171331;
   --surface-raised: #121e39;
+  --ink: #050816;
   --text: #eff7ff;
   --muted: #94a8c3;
   --border: rgba(172, 139, 255, 0.25);
   --border-soft: rgba(172, 139, 255, 0.14);
+  --chrome: rgba(5, 8, 22, 0.92);
+  --chrome-text: #eff7ff;
+  --dock-bg: rgba(4, 8, 24, 0.94);
+  --dock-track: #202a45;
+  --footer-bg: #030713;
+  --footer-gradient-start: #102c64;
+  --footer-gradient-mid: #09152f;
   --brand-icon-neutral: #f8fbff;
+  --dark-soft: #091229;
 }

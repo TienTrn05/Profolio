@@ -1,51 +1,629 @@
-/* Motion stays here because keyframes and global user preferences span components. */
+/* Motion and interaction layer. */
 
-html:not(.no-js) .capability-card[data-reveal] {
-  --reveal-delay: calc(var(--card-index, 0) * 65ms);
+/* Motion layer */
+
+/* Navigation */
+
+.site-header {
+  animation: header-enter 650ms var(--ease) backwards;
+  will-change: transform;
 }
 
-.hero-copy.is-revealed > * {
-  animation: hero-content-enter 650ms var(--ease-out) both;
+.brand-name {
+  animation: brand-name-enter 560ms 180ms var(--ease) backwards;
 }
 
-.hero-copy.is-revealed > :nth-child(2) {
-  animation-delay: 80ms;
+.proof-dock {
+  animation: proof-dock-enter 700ms 520ms var(--ease) backwards;
 }
-.hero-copy.is-revealed > :nth-child(3) {
-  animation-delay: 150ms;
+
+.proof-dock-status i {
+  animation: dock-status-pulse 2.2s ease-in-out infinite;
 }
-.hero-copy.is-revealed > :nth-child(4) {
-  animation-delay: 220ms;
+
+.proof-dock-link.is-active > svg {
+  animation: dock-active-icon 2.8s ease-in-out infinite;
 }
-.hero-copy.is-revealed > :nth-child(5) {
-  animation-delay: 290ms;
+
+.mobile-menu:not([hidden]) li {
+  animation: mobile-link-enter 440ms var(--ease) both;
+}
+
+.mobile-menu:not([hidden]) li:nth-child(2) {
+  animation-delay: 45ms;
+}
+
+.mobile-menu:not([hidden]) li:nth-child(3) {
+  animation-delay: 90ms;
+}
+
+.mobile-menu:not([hidden]) li:nth-child(4) {
+  animation-delay: 135ms;
+}
+
+.mobile-menu:not([hidden]) li:nth-child(5) {
+  animation-delay: 180ms;
+}
+
+/* Shared rhythm */
+
+.section-badge > span:first-child {
+  transform-origin: center;
+  animation: badge-spark 4.8s ease-in-out infinite;
+}
+
+.brand-mark img {
+  animation: rooster-mark-breathe 4.8s ease-in-out infinite;
+}
+
+.tool-motion[aria-pressed="true"] svg {
+  animation: motion-control-orbit 3.2s linear infinite;
+}
+
+.section-heading.is-revealed::after {
+  display: block;
+  width: 3.25rem;
+  height: 2px;
+  margin: 1.35rem auto 0;
+  background: linear-gradient(90deg, var(--purple), var(--yellow));
+  content: "";
+  transform-origin: center;
+  animation: heading-line-enter 750ms 360ms var(--ease) both;
+}
+
+.header-progress {
+  filter: drop-shadow(0 0 0.45rem rgba(var(--brand-rgb), 0.45));
+}
+
+/* Hero */
+
+.hero-copy h1 span {
+  background: linear-gradient(
+    100deg,
+    var(--brand) 5%,
+    var(--accent) 34%,
+    var(--highlight) 50%,
+    var(--brand) 68%
+  );
+  background-size: 240% 100%;
+  background-clip: text;
+  color: transparent;
+  animation: hero-title-gradient 6s ease-in-out infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-media.is-revealed {
-  animation: hero-frame-enter 750ms 100ms var(--ease-out) both;
-}
-.hero-media.is-revealed .hero-gpa-card {
-  animation: hero-content-enter 600ms 400ms var(--ease-out) both;
-}
-.hero-media.is-revealed .hero-identity-card {
-  animation: hero-content-enter 600ms 500ms var(--ease-out) both;
+  animation: hero-frame-enter 950ms 140ms var(--ease) both;
 }
 
-@keyframes hero-content-enter {
+.hero-media.is-revealed .hero-gpa-card {
+  animation: hero-card-enter 720ms 620ms var(--ease) both;
+}
+
+.hero-media.is-revealed .hero-identity-card {
+  animation: hero-identity-enter 720ms 760ms var(--ease) both;
+}
+
+.hero-media.is-revealed::after {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: -35%;
+  width: 22%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.16),
+    transparent
+  );
+  content: "";
+  pointer-events: none;
+  transform: skewX(-14deg);
+  animation: hero-light-pass 1.2s 900ms var(--ease) both;
+}
+
+.hero-eyebrow > span,
+.build-pill span {
+  animation: status-pulse 2.8s ease-in-out infinite;
+}
+
+/* Project storytelling */
+
+.project-panel {
+  position: relative;
+  isolation: isolate;
+  --project-spot-x: 70%;
+  --project-spot-y: 30%;
+}
+
+.project-panel::after {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  background: radial-gradient(
+    circle 18rem at var(--project-spot-x) var(--project-spot-y),
+    color-mix(in srgb, var(--purple) 8%, transparent),
+    transparent 72%
+  );
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+.project-panel:hover::after {
+  opacity: 1;
+}
+
+.project-evidence div,
+.project-layer-flow > span {
+  transition:
+    border-color 220ms ease,
+    background-color 220ms ease,
+    transform 260ms var(--ease);
+}
+
+.project-evidence div:hover {
+  background: color-mix(in srgb, var(--purple) 7%, transparent);
+  transform: translateX(0.35rem);
+}
+
+.project-layer-flow > span:hover {
+  border-color: color-mix(in srgb, var(--purple) 48%, var(--border));
+  transform: translateY(-0.25rem);
+}
+
+.project-list-region {
+  transition:
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.project-list-region.is-expanded {
+  box-shadow: inset 0 -1.5rem 2rem -2rem rgba(var(--brand-rgb), 0.45);
+}
+
+.work-footer button[aria-expanded="true"] > svg {
+  animation: social-icon-pop 450ms var(--ease);
+}
+
+/* Capability cards */
+
+html:not(.no-js) .capability-card[data-reveal] {
+  --reveal-delay: calc(var(--card-index, 0) * 90ms);
+}
+
+.capability-card {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 320ms var(--ease),
+    background-color 320ms ease,
+    box-shadow 320ms ease;
+}
+
+.capability-card::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -35%;
+  width: 22%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.07),
+    transparent
+  );
+  content: "";
+  pointer-events: none;
+  transform: skewX(-16deg);
+  transition: left 700ms var(--ease);
+}
+
+.capability-card:hover {
+  z-index: 1;
+  box-shadow: 0 1.5rem 3.5rem rgba(0, 0, 0, 0.2);
+  transform: translateY(-0.45rem);
+}
+
+.capability-card:hover::after {
+  left: 120%;
+}
+
+.capability-card.is-revealed .capability-icon {
+  animation: capability-icon-enter 650ms
+    calc(160ms + var(--card-index, 0) * 90ms) var(--ease) backwards;
+}
+
+.capability-card.is-revealed li {
+  animation: project-detail-enter 520ms var(--ease) both;
+}
+
+.capability-card.is-revealed li:nth-child(1) {
+  animation-delay: calc(230ms + var(--card-index, 0) * 70ms);
+}
+
+.capability-card.is-revealed li:nth-child(2) {
+  animation-delay: calc(300ms + var(--card-index, 0) * 70ms);
+}
+
+.capability-card.is-revealed li:nth-child(3) {
+  animation-delay: calc(370ms + var(--card-index, 0) * 70ms);
+}
+
+.capability-card:hover .capability-icon {
+  transform: translateY(-0.2rem) rotate(-4deg);
+  box-shadow: 0 0.8rem 2rem rgba(var(--brand-rgb), 0.18);
+}
+
+.capability-card li {
+  transition:
+    background-color 220ms ease,
+    transform 260ms var(--ease);
+}
+
+.capability-card li:hover {
+  background: rgba(var(--brand-rgb), 0.07);
+  transform: translateX(0.2rem);
+}
+
+.capability-icon {
+  transition:
+    transform 280ms var(--ease),
+    box-shadow 280ms ease;
+}
+
+/* Footer and dialogs */
+
+.contact-grid > div:first-child.is-revealed h2 {
+  animation: section-text-enter 700ms 100ms var(--ease) both;
+}
+
+.contact-grid > div:first-child.is-revealed > p {
+  animation: section-text-enter 700ms 210ms var(--ease) both;
+}
+
+.contact-grid > div:first-child.is-revealed .contact-actions {
+  animation: section-text-enter 700ms 320ms var(--ease) both;
+}
+
+.contact-visual.is-revealed .code-window {
+  animation: code-window-enter 850ms 140ms var(--ease) both;
+}
+
+.code-window {
+  transform: translateY(-50%);
+}
+
+.contact-visual.is-revealed .code-window-bar span {
+  animation: code-dot-enter 420ms var(--ease) both;
+}
+
+.contact-visual.is-revealed .code-window-bar span:nth-child(1) {
+  animation-delay: 700ms;
+}
+
+.contact-visual.is-revealed .code-window-bar span:nth-child(2) {
+  animation-delay: 790ms;
+}
+
+.contact-visual.is-revealed .code-window-bar span:nth-child(3) {
+  animation-delay: 880ms;
+}
+
+.footer-contact-grid.is-revealed > div,
+.footer-bottom.is-revealed > div {
+  animation: footer-item-enter 620ms var(--ease) both;
+}
+
+.footer-contact-grid.is-revealed > div:nth-child(2),
+.footer-bottom.is-revealed > div:nth-child(2) {
+  animation-delay: 100ms;
+}
+
+.footer-contact-grid.is-revealed > div:nth-child(3) {
+  animation-delay: 200ms;
+}
+
+.footer-links a:hover svg {
+  animation: social-icon-pop 450ms var(--ease);
+}
+
+.footer-contact-grid > div {
+  transition: transform 280ms var(--ease);
+}
+
+.footer-contact-grid > div:hover {
+  transform: translateY(-0.35rem);
+}
+
+.footer-contact-grid > div:hover > svg {
+  animation: contact-icon-ring 650ms var(--ease);
+}
+
+.money-case-highlights article,
+.money-tool-roles li,
+.case-decision-list article {
+  transition:
+    border-color 240ms ease,
+    background-color 240ms ease,
+    box-shadow 240ms ease,
+    transform 280ms var(--ease);
+}
+
+.money-case-highlights article:hover,
+.case-decision-list article:hover {
+  border-color: color-mix(in srgb, var(--purple) 48%, var(--border));
+  box-shadow: 0 1rem 2.5rem rgba(5, 12, 23, 0.1);
+  transform: translateY(-0.35rem);
+}
+
+.money-tool-roles li:hover {
+  background: color-mix(in srgb, var(--purple) 8%, transparent);
+  transform: translateX(0.3rem);
+}
+
+.case-dialog[open]::backdrop,
+.contact-dialog[open]::backdrop {
+  animation: dialog-backdrop-enter 280ms ease both;
+}
+
+.case-dialog[open] .case-dialog-shell,
+.contact-dialog[open] .contact-dialog-shell {
+  animation: dialog-shell-enter 520ms var(--ease) both;
+}
+
+.case-dialog[open] .money-case-copy > *,
+.case-dialog[open] .case-hero > * {
+  animation: dialog-content-enter 620ms var(--ease) both;
+}
+
+.case-dialog[open] .money-case-copy > *:nth-child(2),
+.case-dialog[open] .case-hero > *:nth-child(2) {
+  animation-delay: 70ms;
+}
+
+.case-dialog[open] .money-case-copy > *:nth-child(3),
+.case-dialog[open] .case-hero > *:nth-child(3) {
+  animation-delay: 140ms;
+}
+
+.case-dialog[open] .money-case-copy > *:nth-child(4),
+.case-dialog[open] .case-hero > *:nth-child(4) {
+  animation-delay: 210ms;
+}
+
+.case-dialog[open] .money-case-copy > *:nth-child(5),
+.case-dialog[open] .case-hero > *:nth-child(5) {
+  animation-delay: 280ms;
+}
+
+.case-dialog[open] .money-case-screen {
+  animation: case-phone-enter 850ms 260ms var(--ease) both;
+}
+
+.case-dialog[open] .money-case-highlights article {
+  animation: case-card-enter 620ms var(--ease) both;
+}
+
+.case-dialog[open] .money-case-highlights article:nth-child(1) {
+  animation-delay: 320ms;
+}
+
+.case-dialog[open] .money-case-highlights article:nth-child(2) {
+  animation-delay: 410ms;
+}
+
+.case-dialog[open] .money-case-highlights article:nth-child(3) {
+  animation-delay: 500ms;
+}
+
+.case-dialog[open] .money-flow-step > span {
+  animation: system-node-enter 520ms var(--ease) both;
+}
+
+.case-dialog[open] .money-flow-step:nth-child(1) > span {
+  animation-delay: 420ms;
+}
+
+.case-dialog[open] .money-flow-step:nth-child(2) > span {
+  animation-delay: 510ms;
+}
+
+.case-dialog[open] .money-flow-step:nth-child(3) > span {
+  animation-delay: 600ms;
+}
+
+.case-dialog[open] .money-flow-step:nth-child(4) > span {
+  animation-delay: 690ms;
+}
+
+.contact-dialog[open] .contact-dialog-header > *,
+.contact-dialog[open] .contact-form > * {
+  animation: dialog-content-enter 520ms var(--ease) both;
+}
+
+.contact-dialog[open] .contact-form > *:nth-child(1) {
+  animation-delay: 120ms;
+}
+
+.contact-dialog[open] .contact-form > *:nth-child(2) {
+  animation-delay: 190ms;
+}
+
+.contact-dialog[open] .contact-form > *:nth-child(3) {
+  animation-delay: 260ms;
+}
+
+.contact-dialog[open] .contact-form > *:nth-child(4) {
+  animation-delay: 330ms;
+}
+
+@keyframes rooster-mark-breathe {
+  0%,
+  100% {
+    filter: saturate(1) drop-shadow(0 0 0 rgba(var(--brand-rgb), 0));
+  }
+  50% {
+    filter: saturate(1.2) drop-shadow(0 0 0.45rem rgba(var(--brand-rgb), 0.34));
+  }
+}
+
+@keyframes motion-control-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes hero-title-gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes contact-icon-ring {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 rgba(255, 196, 31, 0));
+    transform: rotate(0) scale(1);
+  }
+  45% {
+    filter: drop-shadow(0 0 0.7rem rgba(255, 196, 31, 0.5));
+    transform: rotate(-8deg) scale(1.14);
+  }
+}
+
+@keyframes heading-line-enter {
   from {
     opacity: 0;
-    transform: translate3d(0, 14px, 0);
+    transform: scaleX(0);
   }
   to {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    transform: scaleX(1);
   }
 }
 
 @keyframes hero-frame-enter {
   from {
+    clip-path: inset(0 0 100% 0 round 1.5rem);
     opacity: 0;
     transform: scale(0.97);
+  }
+  to {
+    clip-path: inset(0 0 0 0 round 1.5rem);
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes hero-card-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(-1.5rem, 0, 0) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes hero-identity-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-light-pass {
+  from {
+    left: -35%;
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  to {
+    left: 125%;
+    opacity: 0;
+  }
+}
+
+@keyframes status-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.18);
+  }
+  50% {
+    box-shadow: 0 0 0 0.45rem rgba(34, 197, 94, 0);
+  }
+}
+
+@keyframes project-detail-enter {
+  from {
+    opacity: 0;
+    transform: translateX(-0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes system-node-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes capability-icon-enter {
+  from {
+    opacity: 0;
+    transform: rotate(-12deg) scale(0.72);
+  }
+  70% {
+    transform: rotate(3deg) scale(1.06);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+@keyframes code-window-enter {
+  from {
+    opacity: 0;
+    transform: perspective(50rem) translateY(calc(-50% + 2rem)) rotateX(6deg)
+      scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(50rem) translateY(-50%) rotateX(0) scale(1);
+  }
+}
+
+@keyframes code-dot-enter {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  70% {
+    transform: scale(1.25);
   }
   to {
     opacity: 1;
@@ -53,27 +631,251 @@ html:not(.no-js) .capability-card[data-reveal] {
   }
 }
 
+@keyframes footer-item-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes social-icon-pop {
+  0%,
+  100% {
+    transform: scale(1) rotate(0);
+  }
+  45% {
+    transform: scale(1.2) rotate(-8deg);
+  }
+}
+
+@keyframes dialog-backdrop-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dialog-shell-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem) scale(0.975);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes dialog-content-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes case-phone-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(3rem, 1rem, 0) rotate(9deg) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(3deg) scale(1);
+  }
+}
+
+@keyframes case-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-copy.is-revealed .hero-eyebrow {
+  animation: hero-content-enter 650ms 80ms var(--ease) both;
+}
+
+.hero-copy.is-revealed h1 {
+  animation: hero-content-enter 700ms 170ms var(--ease) both;
+}
+
+.hero-copy.is-revealed .hero-description {
+  animation: hero-content-enter 700ms 350ms var(--ease) both;
+}
+
+.hero-copy.is-revealed .hero-actions {
+  animation: hero-content-enter 700ms 440ms var(--ease) both;
+}
+
+.hero-copy.is-revealed .hero-capabilities {
+  animation: hero-content-enter 750ms 550ms var(--ease) both;
+}
+
+.hero-copy.is-revealed .hero-actions {
+  animation-delay: 650ms;
+}
+
+.project-panel {
+  transition:
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.project-panel:hover {
+  border-color: color-mix(in srgb, var(--purple) 52%, var(--border));
+  box-shadow: 0 1.5rem 3.5rem rgba(5, 12, 23, 0.1);
+}
+
+.section-heading.is-revealed .section-badge {
+  animation: section-text-enter 650ms var(--ease) both;
+}
+
+.section-heading.is-revealed h2 {
+  animation: section-text-enter 720ms 110ms var(--ease) both;
+}
+
+.section-heading.is-revealed > p {
+  animation: section-text-enter 720ms 220ms var(--ease) both;
+}
+
+@keyframes badge-spark {
+  0%,
+  100% {
+    opacity: 0.75;
+    transform: rotate(0deg) scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(180deg) scale(1.18);
+  }
+}
+
+@keyframes hero-content-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1.4rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes section-text-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1.15rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes header-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes brand-name-enter {
+  from {
+    opacity: 0;
+    transform: translateX(-0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes proof-dock-enter {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 1.5rem) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+@keyframes dock-status-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 0.4rem rgba(52, 211, 153, 0);
+  }
+}
+
+@keyframes dock-active-icon {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-0.13rem) rotate(-4deg);
+  }
+}
+
+@keyframes mobile-link-enter {
+  from {
+    opacity: 0;
+    transform: translateX(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 html[data-motion="reduced"] *,
 html[data-motion="reduced"] *::before,
 html[data-motion="reduced"] *::after {
-  animation-duration: 0.01ms !important;
-  animation-iteration-count: 1 !important;
   scroll-behavior: auto !important;
-  transition-duration: 0.01ms !important;
+  animation: none !important;
+  animation-delay: 0ms !important;
+  animation-duration: 1ms !important;
+  animation-iteration-count: 1 !important;
+  transition: none !important;
+  transition-delay: 0ms !important;
+  transition-duration: 1ms !important;
+}
+
+html[data-motion="reduced"] .site-header.is-hidden {
+  transform: none;
 }
 
 html[data-motion="reduced"]:not(.no-js) [data-reveal] {
-  opacity: 1 !important;
-  transform: none !important;
+  opacity: 1;
+  filter: none;
+  transform: none;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html:not([data-motion="full"]) *,
-  html:not([data-motion="full"]) *::before,
-  html:not([data-motion="full"]) *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
+@media (max-width: 767px) {
+  .proof-dock {
+    animation: none;
+    transform: none;
   }
 }

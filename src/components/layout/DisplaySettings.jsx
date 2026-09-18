@@ -51,11 +51,11 @@ export default function DisplaySettings() {
 
   return (
     <aside
-      className="fixed top-1/3 left-0 z-40 flex flex-col gap-2 max-md:top-auto max-md:bottom-20 max-md:flex-row"
+      className="fixed top-1/3 left-0 z-40 flex flex-col gap-2 max-md:top-auto max-md:bottom-[5.9rem] max-md:flex-row"
       aria-label="Display settings"
     >
       <button
-        className="group inline-flex min-h-11 items-center gap-2 rounded-r-md bg-brand px-3 text-sm font-semibold text-white shadow-lg transition-[padding] hover:pr-4"
+        className="tool-motion group inline-flex min-h-11 items-center gap-2 rounded-r-md bg-brand px-3 text-sm font-semibold text-white shadow-lg transition-[padding] hover:pr-4"
         type="button"
         aria-pressed={motion === "full"}
         aria-label={

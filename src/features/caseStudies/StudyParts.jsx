@@ -1,16 +1,20 @@
 import Icon from "../../components/ui/Icon";
 
-export function StudyHeading({ index, title, children }) {
+export function StudyHeading({ index, title, children, dark = false }) {
   return (
     <div className="mb-5">
       <span className="font-mono text-xs font-semibold tracking-wider text-brand uppercase">
         {index}
       </span>
-      <h3 className="mt-2 text-2xl leading-tight font-bold text-ink">
+      <h3
+        className={`mt-2 text-2xl leading-tight font-bold ${dark ? "text-white" : "text-ink"}`}
+      >
         {title}
       </h3>
       {children && (
-        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
+        <p
+          className={`mt-3 max-w-3xl text-sm leading-relaxed ${dark ? "text-white/65" : "text-muted"}`}
+        >
           {children}
         </p>
       )}
@@ -18,16 +22,25 @@ export function StudyHeading({ index, title, children }) {
   );
 }
 
-export function StudyFlow({ steps, label }) {
+export function StudyFlow({ steps, label, dark = false }) {
   return (
     <div className="grid gap-3 md:grid-cols-4" aria-label={label}>
       {steps.map(([name, purpose], index) => (
-        <div
-          key={name}
-          className="relative rounded-xl border border-brand/25 bg-brand/5 p-4"
-        >
-          <strong className="block text-base text-ink">{name}</strong>
-          <small className="text-xs text-muted">{purpose}</small>
+        <div key={name} className="money-flow-step relative">
+          <span
+            className={`block rounded-xl border p-4 ${dark ? "border-white/15 bg-white/5" : "border-brand/25 bg-brand/5"}`}
+          >
+            <strong
+              className={`block text-base ${dark ? "text-white" : "text-ink"}`}
+            >
+              {name}
+            </strong>
+            <small
+              className={dark ? "text-xs text-white/55" : "text-xs text-muted"}
+            >
+              {purpose}
+            </small>
+          </span>
           {index < steps.length - 1 && (
             <Icon
               name="arrow-right"

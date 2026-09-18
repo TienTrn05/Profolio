@@ -81,9 +81,9 @@ export default function WorkflowTools() {
       id="workflow"
       aria-labelledby="workflow-title"
     >
-      <div className="relative z-10 mx-auto mb-[clamp(2.5rem,5vw,4rem)] w-full max-w-[104rem] px-8 text-center">
-        <header data-reveal>
-          <div className="inline-flex items-center gap-2 rounded-full bg-[var(--brand)] px-5 py-3 text-base leading-none font-semibold text-white uppercase">
+      <div className="relative z-10 mx-auto mb-[clamp(2.5rem,5vw,4rem)] w-full max-w-[var(--container)] px-8 text-center md:px-16">
+        <header className="section-heading" data-reveal>
+          <div className="section-badge inline-flex items-center gap-2 rounded-full bg-[var(--brand)] px-5 py-3 text-base leading-none font-semibold text-white uppercase">
             <span aria-hidden="true">✦</span>
             <span>How I Build</span>
           </div>
