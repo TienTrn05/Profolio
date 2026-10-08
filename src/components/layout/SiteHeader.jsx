@@ -97,7 +97,7 @@ export default function SiteHeader() {
             <a
               className="nav-resume inline-flex min-h-10 items-center gap-2 border border-[var(--border)] bg-surface-soft px-4 py-2 text-sm font-bold transition-[transform,border-color,background-color] hover:-translate-y-0.5 hover:border-brand hover:bg-brand/10"
               href={portfolioLinks.resume}
-              download
+              download={portfolioLinks.resumeDownloadName}
             >
               <span>Résumé</span>
               <Icon name="file-down" className="size-4" />
