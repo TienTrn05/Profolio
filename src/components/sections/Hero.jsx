@@ -75,7 +75,7 @@ export default function Hero() {
             </a>
             <a
               href={portfolioLinks.resume}
-              download
+              download={portfolioLinks.resumeDownloadName}
               className="inline-flex min-h-14 items-center gap-2 rounded-md border border-[var(--border)] bg-surface px-7 py-3 font-bold transition-colors hover:border-brand"
             >
               Download CV <Icon name="file-down" className="size-5" />
